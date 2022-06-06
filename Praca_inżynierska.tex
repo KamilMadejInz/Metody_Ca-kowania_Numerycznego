@@ -73,12 +73,6 @@
 \blankpage
 
 
-\section*{Wykaz symboli, oznaczeń i skrótów (opcjonalny)}
-\addcontentsline{toc}{section}{Wykaz symboli, oznaczeń i skrótów (opcjonalny)}%
-
-1 $\div$ 2 stron wykaz ważniejszych symboli i oznaczeń (jeśli jest potrzebny).
-\clearpage
-
 \section{Wstęp/wprowadzenie}
 1 $\div$ 5 stron charakterystyka problematyki w świetle aktualnego stanu wiedzy i~techniki, ze wskazaniem na zagadnienia istotne z punktu widzenia realizowanej pracy.
 Na trzeciej stronie można zamieścić podziękowania dla osób, które przyczyniły się do powstania pracy dyplomowej. Na kolejnej stronie nieparzystej rozpoczyna się spis treści. Po spisie treści zalecane jest umieszczenie wykazu użytych symboli, oznaczeń i akronimów. Od tego miejsca rozpoczyna się numeracja rozdziałów. Na następnej stronie umieszcza się wprowadzenie do pracy (scharakteryzowanie problematyki pracy, uzasadnienie wyboru tematyki) oraz przedstawia: cel i/lub tezę pracy, zakres pracy, przyjęte założenia itp.
@@ -356,8 +350,11 @@ def f_adapt(f,ax,bx,tol):
 
 \subsection{Metody Monte Carlo}
 
-Metoda Monte Carlo to zupełnie odmienne od metod Newtona Cotesa oraz metod Gaussa podejście do obliczania wartości całki. Polega ona na wylosowaniu obliczaniu pola powierzchni pod krzywą używając losowo rozmieszczonych punktów w obrębie granic całkowania.\\
-Istnieją dwa rodzaje metod Monte Carlo.Podstawowa metoda Mone Carlo, zwana też Crude Monte Carlo polega ona na wylosowaniu $n$ punktów w obrębie przedziału całkowania i na podstawie tych danych obliczenie średniej wartości funkcji. \cite{MonteCarlo_1}
+Metoda Monte Carlo to zupełnie odmienne od metod Newtona Cotesa oraz metod Gaussa podejście do obliczania wartości całki. Polega ona na obliczaniu pola powierzchni pod krzywą używając losowo rozmieszczonych punktów w obrębie granic całkowania.\\
+Istnieją dwa rodzaje metod Monte Carlo.
+
+\subsubsection{Crude Monte Carlo}
+Podstawowa metoda Mone Carlo, zwana też Crude Monte Carlo polega ona na wylosowaniu $n$ punktów w obrębie przedziału całkowania i na podstawie tych danych obliczenie średniej wartości funkcji. \cite{MonteCarlo_1}
 
 \begin{equation}
 f_{sr} = \frac{f(x_1)+f(x_2) + ... + f(x_n)}{n}
@@ -370,11 +367,15 @@ Przybliżoną wartość całki otrzymujemy dzieląc uzyskaną średnią wartoś�
 \label{Eq:MonteCarlo2}
 \end{equation}
 
-Bardziej dokładną jest metoda Monte Carlo, która polega na wylosowaniu $n$ punktów znajdujących się w polu kwadratu, który wyznaczany jest przez przedział całkowania $<a,b>$ oraz zakres wartości funkcji w tym przedziale $<f(a),f(b)>$. Po wylosowaniu $n$ punktów wartość całki wyrażana jest jako:
+
+\subsubsection{Monte Carlo}
+Bardziej dokładną wersją jest metoda Monte Carlo, która polega na wylosowaniu $n$ punktów znajdujących się w polu kwadratu, który wyznaczany jest przez przedział całkowania $<a,b>$ oraz zakres wartości funkcji w tym przedziale $<f(a),f(b)>$. Po wylosowaniu $n$ punktów wartość całki wyrażana jest jako:
 
 \begin{equation}
 I = P * \frac{c}{n}
 \end{equation}
+
+gdzie c to ilość punktów leżących się pod krzywą.\\
 
 Wraz ze zwiększaniem ilości losowanych punktów, rozkładają się one bardziej równomiernie w obrębie wyznaczonego prostokąta, dając coraz dokładniejszy wynik.\cite{MonteCarlo_2}
 
@@ -747,6 +748,13 @@ Tabela \eqref{tabela2.3} przedstawia wyniki uzyskanie z działania metody trapez
 
 \subsubsection{Metoda Simpsona}
 
+\begin{lstlisting}[caption={Kod w języku python implementujący metodę prostokątów}]
+def f_simp2I(f,a,b,n):
+    """
+    """
+\end{lstlisting}
+\label{Listing 8}
+
 \paragraph{Funkcja wielomianowa}
 
 Tabela \eqref{tabela3.1} przedstawia wyniki uzyskanie z działania metody Simpsona dla funkcii podcałkowej \eqref{Eq:polynomial}. Metoda Simpsona potrzebowała 6 podprzedziałów by osiągnąć zadaną dokładność.
@@ -820,6 +828,13 @@ Tabela \eqref{tabela3.3} przedstawia wyniki uzyskanie z działania metody Simpso
 
 \subsubsection{Metoda Gaussa Legendre'a}
 
+\begin{lstlisting}[caption={Kod w języku python implementujący metodę trapezów}]
+def f_gauss_legrande(f,a,b,n):
+    """
+    """
+\end{lstlisting}
+\label{Listing 9}
+
 \paragraph{Funkcja wielomianowa}
 
 Tabela \eqref{tabela4.1} przedstawia wyniki uzyskanie z działania metody Gaussa Legendre'a dla funkcii podcałkowej \eqref{Eq:polynomial}. Funkcja , dla której liczona jest całka jest wielomianem stopnia 5, a metoda Gaussa Legendre'a jest dokładna dla wielomianów stopnia $2n+1$, dlatego do uzyskania zadanej dokładności potrzepowała jedynie 3 podprzedziałów.
@@ -890,8 +905,14 @@ Tabela \eqref{tabela4.3} przedstawia wyniki uzyskanie z działania metody Gaussa
 
 \subsubsection{Metoda adaptacyjna trapezów}
 
-\paragraph{Funkcja wielomianowa}
+\begin{lstlisting}[caption={Kod w języku python implementujący metodę trapezów}]
+def f_adapt(f,ax,bx,tol):
+    """
+    """
+\end{lstlisting}
+\label{Listing 10}
 
+\paragraph{Funkcja wielomianowa}
 
 Tabela \eqref{tabela5.1} przedstawia wyniki uzyskanie z działania metody Adaptacyjnej Trapezów dla funkcii podcałkowej \eqref{Eq:polynomial}.
 
@@ -936,8 +957,14 @@ Tabela \eqref{tabela5.2} przedstawia wyniki uzyskanie z działania metody Adapta
 \paragraph{Funkcja Mieszana}
 
 
-
 \subsubsection{Metoda Crude Monte Carlo}
+
+\begin{lstlisting}[caption={Kod w języku python implementujący metodę trapezów}]
+def f_crudeMonteC(f,a,b,n):
+    """
+    """
+\end{lstlisting}
+\label{Listing 11}
 
 \paragraph{Funkcja wielomianowa}
 
@@ -1030,6 +1057,13 @@ Tabela \eqref{tabela6.3} przedstawia wyniki uzyskanie z działania metody Crude 
 
 
 \subsubsection{Metoda Monte Carlo}
+
+\begin{lstlisting}[caption={Kod w języku python implementujący metodę trapezów}]
+def f_MonteC(f,a,b,n):
+    """
+    """
+\end{lstlisting}
+\label{Listing 11}
 
 \paragraph{Funkcja wielomianowa}
 
