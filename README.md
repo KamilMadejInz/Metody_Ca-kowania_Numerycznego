@@ -1,0 +1,1 @@
+# Metody_Ca-kowania_Numerycznego
