@@ -592,38 +592,6 @@ Początkowo wartość błędu obliczonej całki jest duża, z racji przyjętego 
 \end{tabular}
 \end{table}
 
-\paragraph{Funkcja mieszana}\mbox{} \\
-
-Tabela \eqref{tabela1.2} prezentuje wyniki działania metody prostokątów dla funkcji \eqref{Eq:mix} na przedziale $[0,2]$.
-Na krańcach przedziału całkowania wartości całkowanej funkcji przyjmują  wartości dodatnie, przez co prostokąt przybliżający pomija zupełnie ujemnie wartości funkcji, co skutkuje znacznym dodatnim przeszacowaniem funkcji. Z raci bardzo donamicznie zmieniających się wartości funkcji sytuacja ta powtarza się dla kilku kolejnych iteracj . Wraz z rosnącą ilością podprzedziałów funkcją jest coraz lepiej przybliżana przez funkcję, by przy 133 podprzedziałach przyjąć wartość z zadaną dokładnością.
-
-
-
-\begin{table}[H]
-\centering
-\caption{Dane z iteracji w metodzie prostkoątów dla złożenia funkcji wielomianowej i trygonometrycznej}
-\label{tabela1.3}
-\begin{tabular}{lrrr}
-\toprule
-{} &  Wartość całki &  l.podp &       Błąd \\
-\midrule
-0   &      19.299321 &       1 &  19.690535 \\
-1   &      23.217411 &       2 &  23.608625 \\
-2   &       4.506768 &       3 &   4.897982 \\
-3   &      24.144424 &       4 &  24.535638 \\
-4   &       3.105923 &       5 &   3.497138 \\
-*   &       * &       * &   * \\
-129 &      -0.401735 &     130 &  -0.010521 \\
-130 &      -0.401572 &     131 &  -0.010358 \\
-131 &      -0.401413 &     132 &  -0.010199 \\
-132 &      -0.401257 &     133 &  -0.010043 \\
-133 &      -0.401106 &     134 &  -0.009891 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-
-
 \subsubsection{Metoda trapezów}
 
 Funkcja implementująca metodę trapezów, przyjmuje dokładnie te same parametry co metoda prostokątów. Pierwszym parametrem jest funkcja podcałkowa, kolejnymi dwoma kolejno górny i dolny przedział całkowania, a ostatnim  ilość podprzedziałów, na które dzielimy przedział całkowania. Funkcja zwraca przybliżoną wartość całki.
@@ -705,33 +673,6 @@ Metoda trapezów przyjmuję wartość z zadaną dokładnością przy ilości pod
 \end{tabular}
 \end{table}
 
-\paragraph{Funkcja mieszana}\mbox{} \\
-
-Tabela \eqref{tabela2.3} przedstawia wyniki uzyskanie z działania metody trapezów na funkcji \eqref{Eq:mix}. W pierwszych 4 iteracjach widzimy bardzi rozbieżne wyniki. Funkcja \eqref{Eq:mix} zmienia się bardzo dynamicznie na zadanym przedziale, przez co mała liczba podprzedziałów może dawać wyniku zupełnie odbiegające od realnej wartości całki. Do uzyskania zadanej dokładności metoda trapezów potrzebowałą 188 podprzedziałów.
-
-\begin{table}[H]
-\centering
-\caption{Dane z iteracji w metodzie trapezów dla funkcji mieszanej}
-\label{tabela2.3}
-\begin{tabular}{lrrr}
-\toprule
-{} &  Wartość całki &  l.podp &       Błąd \\
-\midrule
-0   &      34.492755 &       1 &  34.883969 \\
-1   &      26.896038 &       2 &  27.287252 \\
-2   &       1.374685 &       3 &   1.765899 \\
-3   &      25.056724 &       4 &  25.447939 \\
-4   &      -1.163902 &       5 &  -0.772688 \\
-*   &       * &       * &   * \\
-183 &      -0.380849 &     184 &   0.010365 \\
-184 &      -0.380962 &     185 &   0.010253 \\
-185 &      -0.381072 &     186 &   0.010142 \\
-186 &      -0.381181 &     187 &   0.010033 \\
-187 &      -0.381288 &     188 &   0.009926 \\
-\bottomrule
-\end{tabular}
-
-\end{table}
 
 \subsubsection{Metoda Simpsona}
 
@@ -784,35 +725,6 @@ Tabela \eqref{tabela3.2} przedstawia wyniki uzyskanie z działania metody Simpso
 \end{table}
 
 
-\paragraph{Funkcja mieszana}\mbox{} \\
-
-Tabela \eqref{tabela3.3} przedstawia wyniki uzyskanie z działania metody Simpsona dla funkcii podcałkowej \eqref{Eq:mix}. Metoda Simpsona potrzebowała 76 podprzedziałów by osiągnąć zadaną dokładność.
-
-\begin{table}[H]
-\centering
-\caption{Dane z iteracji w metodzie Simpsona dla funkci mieszanej}
-\label{tabela3.3}
-\begin{tabular}{lrrr}
-\toprule
-{} &  Wartość całki &  l.podp &       Błąd \\
-\midrule
-0  &      24.363799 &       2 &  24.755013 \\
-1  &      24.443620 &       4 &  24.834834 \\
-2  &       3.462740 &       6 &   3.853954 \\
-3  &      24.448524 &       8 &  24.839738 \\
-4  &       1.682648 &      10 &   2.073863 \\
-*   &       * &       * &   * \\
-33 &      -0.406964 &      68 &  -0.015750 \\
-34 &      -0.404972 &      70 &  -0.013757 \\
-35 &      -0.403293 &      72 &  -0.012078 \\
-36 &      -0.401868 &      74 &  -0.010654 \\
-37 &      -0.400653 &      76 &  -0.009438 \\
-\bottomrule
-\end{tabular}
-
-\end{table}
-
-
 \subsubsection{Metoda Gaussa Legendre'a}
 
 \begin{lstlisting}[caption={Kod w języku python implementujący metodę trapezów}]
@@ -860,35 +772,6 @@ Tabela \eqref{tabela4.2} przedstawia wyniki uzyskanie z działania metody Gaussa
 4 &       0.456455 &       5 &  0.211748 \\
 5 &       0.212634 &       6 & -0.032073 \\
 6 &       0.248022 &       7 &  0.003315 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\paragraph{Funckja mieszana}\mbox{} \\
-
-Tabela \eqref{tabela4.3} przedstawia wyniki uzyskanie z działania metody Gaussa Legendre'a dla funkcii podcałkowej \eqref{Eq:mix}.
-Do uzyskania zakładanej dokładności metoda potrzebowała 30 węzłów interpolacyjnych.
-
-
-\begin{table}[H]
-\centering
-\caption{Dane z iteracji w metodzie Gauss'a Legendre'a dla funkcji mieszanej}
-\label{tabela4.3}
-\begin{tabular}{lrrr}
-\toprule
-{} &  Wartość całki &  l.podp &       Błąd \\
-\midrule
-0  &      19.299321 &       1 &  19.690535 \\
-1  &     -24.723636 &       2 & -24.332421 \\
-2  &      21.272072 &       3 &  21.663286 \\
-3  &      -1.592403 &       4 &  -1.201189 \\
-4  &       9.728832 &       5 &  10.120047 \\
-*   &       * &       * &   * \\
-25 &      -2.358643 &      26 &  -1.967429 \\
-26 &       0.285786 &      27 &   0.677001 \\
-27 &      -0.581395 &      28 &  -0.190180 \\
-28 &      -0.348563 &      29 &   0.042651 \\
-29 &      -0.398152 &      30 &  -0.006938 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -962,35 +845,6 @@ Tabela \eqref{tabela5.2} przedstawia wyniki uzyskanie z działania metody Adapta
 \end{tabular}
 \end{table}
 
-\paragraph{Funkcja Mieszana}\mbox{} \\
-
-Tabela \eqref{tabela5.3} przedstawia wyniki uzyskanie z działania metody Adaptacyjnej Trapezów dla funkcii podcałkowej \eqref{Eq:mix}. Pierwsze dwa wiersze pokazują, że wybrana tolerancja była za niska, przez co różnica między ...
-
-\begin{table}[H]
-\centering 
-\caption{Dane z iteracji w metodzie Adaptacyjnej Trapezów dla mieszanej}
-\label{tabela5.3}
-\begin{tabular}{lrrrr}
-\toprule
-{} &  Wartość całki &  l.podprzedziałów &  Tol &      Błąd \\
-\midrule
-0 &       24.600573893413245 &  8  &   0.1 & -24.991788285813243 \\
-1 &       24.48676522929313 &  16 &   0.01 & -24.87797962169313 \\
-2 &       -0.3890086285875674 &  348  &  0.001 & -0.002205763812432593 \\
-3 &       -0.39122911295283574 &  730  &  0.001  & 0,0000147205528357452 \\
-4 &       -0.3911766447096509 &  1668  &  0.0001  & -0,000037747690349088 \\
-5 &       -0.39121114244467226 &  3672  &  0.000001  & -0,0000032499553277443 \\
-5 &       -0.3912134512999535 &  8002  &  0.0000001  & -0,000000941100046503162 \\
-5 &       -0.3912144949244205 &  17382  &  0.00000001  & 0,000000102524420508842 \\
-5 &       -0.39121432883709883 &  37406  &  0.000000001  & -0,0000000635629011647154 \\
-5 &       -0.39121436591934805 &  79592  &  0.0000000001  & -0,0000000264806519489901 \\
-5 &       -0.3912143852443817 &  168138  &  0.00000000001  & -0,00000000715561832009825 \\
-5 &       -0.39121439104440364 &  354248  &  0.000000000001  & -0,00000000135559635738857 \\
-5 &       -0.391214392291324 &  754420  &  0.0000000000001  & -0,000000000108676012633424 \\
-\bottomrule
-\end{tabular}
-\end{table}
-
 \subsubsection{Metoda Crude Monte Carlo}
 
 \begin{lstlisting}[caption={Kod w języku python implementujący metodę Crude Monte Carlo}]
@@ -1051,28 +905,6 @@ Dalsze 1-krotne zwiększanie ilości użytych punktów  daje około 7-krotne zmn
 \end{tabular}
 \end{table}
 
-\paragraph{Funkcja mieszana}\mbox{} \\
-
-Tabela \eqref{tabela6.3} przedstawia wyniki uzyskanie z działania metody Crude Monte Carlo dla funkcii podcałkowej \eqref{Eq:mix}.
-Z uwagi na losowość dobieranych punktów średni błąd przybliżenai całki dla 10 punktów okazał się większy niż dla 1. Podobna sytuacja miała miejsce w przypadku 1000 i 100000 punktów. Dla 100000 losowych punktów przybliżenie całi osiągnęło błąd 0.84%
-
-\begin{table}[H]
-\centering 
-\caption{Dane z iteracji w metodzie Crude Monte Carlo dla funkcji mieszanej}
-\label{tabela6.3}
-\begin{tabular}{lrrrrr}
-\toprule
-{Row} &  Points &  minValue &  maxValue &       AVG &      Błąd \\
-\midrule
-1  &     1 & -75,88135548 &   70,53226069 & -0,72964 & 86,51\% \\
-1  &     10 & -17,35749749 &  23,67292102 & 0,835416 & 313,54\% \\
-2  &     100 & -7,861843157 &  6,365066445 & -0,120759 & 69,13\% \\
-3  &     1000 & -2,55727966 &   1,319625489 & -0,444351 & 13,58\% \\
-4  &     10000 & -0,971935441 &  0,1712562312 & -0,268886 & 31,27\% \\
-5  &     100000 & -0,5748109835 &  -0,1730718027 & -0,387912 & 0.84\% \\
-\bottomrule
-\end{tabular}
-\end{table}
 
 \subsubsection{Metoda Monte Carlo}
 
@@ -1121,27 +953,6 @@ Tabela \eqref{tabela7.2} przedstawia wyniki uzyskanie z działania metody Monte 
 3  &     1000 & -2,393655983 &   2,760053799 & 0,243658 & 0,43\% \\
 4  &     10000 & -3,115304313 &  3,196864709 & 0,243453 & 0,51\% \\
 5  &     100000 & -2,799281898 &  3,260480744 & 0,243275 & 0,59\% \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\paragraph{Funkcja mieszana}\mbox{} \\
-
-Tabela \eqref{tabela7.3} przedstawia wyniki uzyskanie z działania metody Monte Carlo dla funkcii podcałkowej \eqref{Eq:mix}.
-
-\begin{table}[H]
-\centering 
-\caption{Dane z iteracji w metodzie Monte Carlo}
-\label{tabela7.3}
-\begin{tabular}{lrrrrr}
-\toprule
-{Row} &  Points &  minValue &  maxValue &       AVG &      Błąd \\
-\midrule
-1  &     10 & -46,77325439 &   40,46954926 & 0,211325 & 372,91\% \\
-2  &     100 & -12,15794381 &  12,4224293 & 0,215333 & 233,95\% \\
-3  &     1000 & -3,949010731 &   3,668428085 & 0,243658 & 321,02\% \\
-4  &     10000 & -2,042774011 &  1,116976784 & 0,243453 & 272,37\% \\
-5  &     100000 & -0,909748384 &  0,1396221061 & 0,243275 & 249,45\% \\
 \bottomrule
 \end{tabular}
 \end{table}
