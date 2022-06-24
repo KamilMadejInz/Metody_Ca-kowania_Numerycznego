@@ -413,60 +413,6 @@ gdzie c to ilość punktów leżących się pod krzywą.\\
 
 Wraz ze zwiększaniem ilości losowanych punktów, rozkładają się one bardziej równomiernie w obrębie wyznaczonego prostokąta, dając coraz dokładniejszy wynik.\cite{MonteCarlo_2}
 
-
-\section{Błędy bezwzględne w metodach całkowania}
-
-Błąd bezwzględny w metodzie prostokątówu wyraża się wzorem:
-
-\begin{equation}
-E_R = f'(c)\int_a^b(t-a)dt = \frac{f'(c)}{2}(b-a)^2
-\label{Eq:rectError}
-\end{equation}
-
-Błąd bezwzględny w metodzie trapezów u wyraża się wzorem:
-
-\begin{equation}
-E_T = -\frac{1}{12}f''(\xi)(b-a)^3
-\label{Eq:rownanie}
-\end{equation}
-
-gdzie $\xi$ leży gdzieś w przedziale [a,b]. Równanie wskazuje, że jeśli całkowana funkcja jest liniowa, metoda trapezów będzie przybliżała funkcję dokładnie.
-
-Błąd dla wielu złożonej metody trapezów może być uzyskany przez zsumowanie pojedyńczych bęłdów w każdym segmencie
-\begin{equation}
-E_T = -\frac{(b-a)^3}{12n^3}\sum_{i=1}^n f''(\xi_i)
-\label{Eq:rownanie}
-\end{equation}
-
-Według powyższego wzoru, jeśli ilość segmentów zostanie podwojona, błąd bezwzględny zostanie zmniejszony czterokrotnie.
-
-Błąd bezwzględny metody Simpsona 1/3 dla pojedyńczego segmentu ma postać
-\begin{equation}
-E_t = -\frac{(b-a)^5}{2880}f^{4}(\xi)
-\label{Eq:rownanie}
-\end{equation}
-
-Metoda simpsona daje dokładny wynik dla wielomianów stopnia 3.
-
-Podobnie jak metoda Trapezów,  złożona metoda Simpsona, jest sumą indywidualnych błędów w poszczególnych segmentach
-\begin{equation}
-E_a = -\frac{(b-a)^5}{180n^4}\bar{f}^{4}(\xi)
-\label{Eq:rownanie}
-\end{equation}
-
-gdzie $\bar{f}^{4}$ jest średnią czwartą pochodną przedziału
-
-Ogólny błąd dla kwadratury Gaussa- Legendre'a wyraża się wzorem:
-
-\begin{equation}
-E_t = \frac{2^{2n+3}[(n+1)!]^4}{(2n+3)[(2n+2)!]^3}f^{2n+2}(\xi)
-\label{Eq:rownanie}
-\end{equation}
-
-gdzie $n$ - liczba punktów minus jeden
-$f^{2n+2}(\xi)$ - (2n+2) pochodna funkcji po zmianie zmiennej na $\xi$ ulokowanej gdzieś w przedziale [-1,1]. 
-
-
 \section{Bibliotek do całkowania numerycznego}
 Następne podrozdziały przedstawiają wyniki i omówienie działania zaimplementowanych przeze mnie metod całkowania dla równan \eqref{Eq:polynomial} \eqref{Eq:trygonometric} \eqref{Eq:mix}. Dla metod całkowania, których logiką działania jest liczenie całki przez podział przedziału całkowania na podprzedziały, skuteczność metody wyrażana będzie w ilości podprzedziałów, na które musiał zostać podzielony przedział całkowania, by otrzymać dokładnoć przybliżenia rzędu $0.01$ lub jeśli to możliwe, dokładną wartość całki.
 Dla metod Monte Carlo skuteczność liczona będzie ilością punktów potrzebnych do uzyskania zadowalającej dokładności.
