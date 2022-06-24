@@ -1003,7 +1003,8 @@ def f_crudeMonteC(f,a,b,n):
 \paragraph{Funkcja wielomianowa}\mbox{} \\
 
 W tabeli \eqref{tabela6.1} przedstawiono wyniki uzyskanie z działania metody Crude Monte Carlo dla funkcii podcałkowej \eqref{Eq:polynomial}.
-Otrzymany błąd dla jednego podprzedziału może wydawać, się zaskakująco mały, lecz trzeba wziąć pod uwagę, że otrzymany błąd jest średnim błędem dla 100 iteracji. Dla jednego podprzedziału wartości całki może wachać się od 1.2 do 61.5103. Wraz ze zwiększaniem ilości punktów, różnica między otrzymanymi rzultatami maleje.
+Otrzymany błąd dla jednego podprzedziału może wydawać, się zaskakująco mały, lecz trzeba wziąć pod uwagę, że jest on średnim błędem dla 100 iteracji. Dla jednego podprzedziału wartości całki może się wahać od 1.2 do 61.5103. Wraz ze zwiększaniem ilości punktów, zakres otrzymywanych wyników ulega zmniejszeniu. w tabeli można również zauważyć, że wartości otrzymane dla 100 jak i 1000 punktów, są bardzo podobne i wynika to ze "szczęścia" z jakim punkty zostaną wylosowane.
+Przy 1000 losowych punktów średni otrzymany błąd przybliżenia wynosi 0.01%.
 
 
 \begin{table}[H]
@@ -1028,6 +1029,8 @@ Otrzymany błąd dla jednego podprzedziału może wydawać, się zaskakująco ma
 \paragraph{Funkcja trygonometryczna}\mbox{} \\
 
 Tabela \eqref{tabela6.2} przedstawia wyniki uzyskanie z działania metody Crude Monte Carlo dla funkcii podcałkowej \eqref{Eq:trygonometric}.
+Na podstawie pierwszych 3 wierszy tabeli widać, że otrzymywany błąd wraz z dziecięsiokrotnym wzrostem ilości punktów maleje około 4-krotnie.
+Dalsze 1-krotne zwiększanie ilości użytych punktów  daje około 7-krotne zmniejszenie błędu. Przy 10000 punktów błąd maleje o połowę, a użycie 100000 daje błąd przybliżenia całki na poziomie 0.12%.
 
 
 \begin{table}[H]
@@ -1051,7 +1054,7 @@ Tabela \eqref{tabela6.2} przedstawia wyniki uzyskanie z działania metody Crude 
 \paragraph{Funkcja mieszana}\mbox{} \\
 
 Tabela \eqref{tabela6.3} przedstawia wyniki uzyskanie z działania metody Crude Monte Carlo dla funkcii podcałkowej \eqref{Eq:mix}.
-
+Z uwagi na losowość dobieranych punktów średni błąd przybliżenai całki dla 10 punktów okazał się większy niż dla 1. Podobna sytuacja miała miejsce w przypadku 1000 i 100000 punktów. Dla 100000 losowych punktów przybliżenie całi osiągnęło błąd 0.84%
 
 \begin{table}[H]
 \centering 
@@ -1066,7 +1069,7 @@ Tabela \eqref{tabela6.3} przedstawia wyniki uzyskanie z działania metody Crude 
 2  &     100 & -7,861843157 &  6,365066445 & -0,120759 & 69,13\% \\
 3  &     1000 & -2,55727966 &   1,319625489 & -0,444351 & 13,58\% \\
 4  &     10000 & -0,971935441 &  0,1712562312 & -0,268886 & 31,27\% \\
-5  &     100000 & -0,5748109835 &  -0,1730718027 & -0,387912 & 0,84\% \\
+5  &     100000 & -0,5748109835 &  -0,1730718027 & -0,387912 & 0.84\% \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1143,7 +1146,218 @@ Tabela \eqref{tabela7.3} przedstawia wyniki uzyskanie z działania metody Monte 
 \end{tabular}
 \end{table}
 
+\subsection{Porównanie zbieżności}
 
+Tabela \eqref{tabela9.1} przedstawia porównanie metod całkowania opartych o interpolację wielomianową dla 2 podprzedziałów.
+Jak widzimy metodą dającą najgorszy wynik jest Metoda Trapezów, zwraca ona wynik 2-krotnie gorszy niż Metoda Prostokątów. 
+Metoda Simpsona daje o 1 rząd wielkości błąd mniejszy niż metody trapezów i prostokątów. 
+Metoda Gaussa Legendrea uzyskała błąd prawie o połowę niższy niż metoda Simpsona.
+
+\begin{table}
+\centering 
+\caption{Tabela porównująca metody całkowania oparte na interpolacji wielomianem dla 2 podprzedziałów }
+\label{tabela9.1}
+\begin{tabular}{lrrr}
+\toprule
+{l.podp} & Metoda &  l.podp &  Błąd \\
+\midrule
+2  &     Prostokątów & 11.6352 &   2.2891  \\
+2  &     Trapezów & 18.579200 &  4.654900  \\
+2  &     Simpsona & 14.333867 &   0.409567  \\
+2  &     Gaussa Legendre & 13.651200 &  0.273100  \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+W tabeli \eqref{tabela9.2} umieszczone zostały wyniki z działania metod dla 4 podprzedziałów.
+Jak widać w tabeli stosunek różnicy pomiędzy metodą Prostokątów i Trapezów pozostał podobny.
+Błąd w metodzie Prostokątów i Trapezów wynosi $\frac{1}{2^2}$ w stosunku do błędu dla 2 podprzedziałów.
+W metodzie Simpsona wraz z podwojeniem podprzedziałów błąd zmniejsza się o $\frac{1}{2^4}$.
+Metoda Gaussa Legendrea daje wynik dokładny dla wielomianów stopnia $2n-1$, w związku z czym już dla 3 węzłów zwróciła ona wynik dokładny.
+
+
+\begin{table}
+\centering 
+\caption{Tabela porównująca metody całkowania oparte na interpolacji wielomianem dla 4 podprzedziałów }
+\label{tabela9.2}
+\begin{tabular}{lrrr}
+\toprule
+{l.podp} & Metoda &  l.podp &  Błąd \\
+\midrule
+4  &     Prostokątów & 13.33520 &   0.58910  \\
+4  &     Trapezów & 15.107200 &  1.182900  \\
+4  &     Simpsona & 13.949867 &   0.025567  \\
+4  &     Gaussa Legendre & 13.924267 &  0.000033  \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+Porównanie metody Simpsona oraz Gaussa Legendra dla funkcji trygonometrycznej.
+
+Jak widać w tabeli \eqref{tabela9.3} początkowoa metoda Simpsona wykazuje dokładniejsze przybliżenie całki niż metoda Gaussa Legendre'a, przy 6 podprzedziałach zwraza błąd 10-krotnie mniejszy. Dopiero gdy liczba podprzedziałów wynosi 8 metoda Gaussa okazuje się być lepsza i zwracać błąd mniejszy o 2 rzędy wielkości. 
+Przy 10 podprzedziałach kwadratura Gaussa zwraca wynik dokładny jeśli zaokrąglimy analitycznie obliczoną całkę do 6 miejsca po przecinkuo.
+
+\begin{table}
+\centering 
+\caption{Tabela porównująca Gaussa i Simpsona }
+\label{tabela9.3}
+\begin{tabular}{lrrr}
+\toprule
+{l.podp} & Metoda &  I &  Błąd \\
+\midrule
+2  &     Simpsona & 1.223177 &   9.784691e-01 \\
+4  &     Simpsona & -0.580448  &   8.251555e-01  \\
+6  &     Simpsona &  0.528331  &   2.836232e-01  \\
+8  &     Simpsona & 0.284161 &   3.945382e-02  \\
+10 &     Simpsona & 0.257320 &   1.261270e-02  \\
+2  &     Gaussa Legendre & -0.184912 &  4.296190e-01   \\
+4  &     Gaussa Legendre & -0.611561 &  8.562686e-01   \\
+6  &     Gaussa Legendre & 0.212634 &  3.207296e-02   \\
+8  &     Gaussa Legendre & 0.244457 &  2.499462e-04  \\
+10 &     Gaussa Legendre & 0.244707 &  6.560406e-07  \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+
+
+Porównanie metody Trapezów i Adaptacyjnej metody trapezów dla funkcji 
+
+Tabela \eqref{tabela9.4} przedstawia porównanie Metody Trapezów i Adaptacyjnej Metody Trapezów. Porównanie zostało przeprowadzone na funkcji \eqref{Eq:polynomial}. Funkcja ta wraz ze wzrostem wartości argumentów przyjmuje coraz większą wartość, przez co żeby metoda mogła osiągnąć zadeklarowaną dokładność, dzieli prawą stronę równania na mniejsze podprzedziały, gdzie zwykła metoda trapezów dzieli funkcję na podprzedziały równo rozmieszczone wzdłuż całego przedziału całkowania. Stąd wynik uzyskany przez metodę trapezów jest 2-krotnie dokładniejszy dla ostatnich dwóch iteracji pokazanych w tabeli.
+
+\begin{table}
+\centering 
+\caption{Tabela porównująca metodę trapezów i adaptacyjną metodę Trapezów}
+\label{tabela9.4}
+\begin{tabular}{lrrr}
+\toprule
+{l.podp} & Metoda &  I &  Błąd \\
+\midrule
+4  &     Trapezów & 15.1072  &   1.1829 \\
+6  &     Trapezów & 14.451595 &   0.527295 \\
+8  &     Trapezów & 14.2212   &   0.2969  \\
+10  &    Trapezów & 14.158947  &   0.234647  \\
+12  &    Trapezów & 14.056336 &    0.132036  \\
+16 &     Trapezów & 13.998575  &   0.074275  \\
+
+4  &     Adaptacyjna & 15.1072 &   1.1829 \\
+6  &     Adaptacyjna & 14.236700 &   0,3124 \\
+8  &     Adaptacyjna & 14,08788  &   0,16358  \\
+10  &     Adaptacyjna & 14.017669 &  0,093369  \\
+12  &    Adaptacyjna & 13.995822 &   0,071522  \\
+16 &     Adaptacyjna & 13.95722 &    0,03292  \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+Metoda adaptacyjna radzi sobię lepiej od metody trapezów gdy całkowana funkcja przyjmuje różne tempo zmian wartości na zadanym przedziale. Przykładem takiej funkcji jest \eqref{Eq:oscillatory}. Funkcja ta coraz bardziej oscyluje w pobliżu prawego punktu końcowego.\\
+Wyniki działania obu metod całkowania tej funkcji prezentuje tebela \eqref{tabela9.5}.\\
+Liczba podprzedziałów nie jest parametrem metody adaptacyjnej dlatego została dobrana na podstawie tego na jaką ilość podprzedziałów została podzielona funkcja przy zadanej tolerancji.\\
+Dla 4 podprzedziałów widzimy, że zadana tolerancja była na tyle duża, że metoda adaptacyjna podzieliła przedział całkowania w ten sam sposób co metoda trapezów.
+Wraz ze wzrostem ilości podprzedziałów adaptacyjna metoda wykazuje znacznie lepszą dokładność w przybliżaniu całki. Dla 98 podprzedziałów błąd metody adaptacyjnej jest o 2 rzędy wielkości mniejszy niż przy zwykłej metodzie trapezów.
+
+\begin{table}
+\centering 
+\caption{Tabela porównująca metodę trapezów i adaptacyjną metodę Trapezów}
+\label{tabela9.5}
+\begin{tabular}{lrrr}
+\toprule
+{l.podp} & Metoda &  I &  Błąd \\
+\midrule
+4  &     Trapezów & 9.731300  &   12.556630 \\
+8  &     Trapezów & -8.227000 &   -5.401670 \\
+10  &     Trapezów & 7.068914   &   9.894244  \\
+18  &    Trapezów & 5.822512  &   -2.997182  \\
+46  &    Trapezów & -2.827854 &    -0.002524   \\
+56 &     Trapezów & -1.467744  &   1.357586  \\
+98 &     Trapezów & 2.295961 &   0.529369  \\
+
+4  &     Adaptacyjna & 9.731300 &   -12.556630 \\
+8  &     Adaptacyjna & -9.439613 &   6.614283 \\
+10  &     Adaptacyjna & -11.1515886  &   8.326258  \\
+18  &     Adaptacyjna & -3.881971 &  1.056641  \\
+46  &    Adaptacyjna & -2.868944 &   0.043614  \\
+56 &     Adaptacyjna & -2.846306 &    0.020976  \\
+98 &     Adaptacyjna & -2.825574 &    0.000244  \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+
+Porównanie metod Monte Carlo
+
+Tabela \eqref{tabela9.6} przedstawia wyniki z całkowania funkcji \eqref{Eq:trygonometric} metodami Crude Monte Carlo oraz Monte Carlo.
+
+\begin{table}
+\centering 
+\caption{Tabela porównująca metodę Crude Monte Carlo oraz Monte Carlo dla funkcji trgonometrycznej}
+\label{tabela9.6}
+\begin{tabular}{lrrr}
+\toprule
+{l.podp} & Metoda &  I &  Błąd \\
+\midrule
+10  &     Crude & 0.217109  &   0.027599 \\
+100  &     Crude & 0.284756 &   0.040048 \\
+1000  &    Crude & 0.25273   &   0.008022  \\
+10000  &    Crude & 0.245071  &   0.000364  \\
+100000  &    Crude & 0.244593 &    0.000115   \\
+1000000  &    Crude & 0.244602 &    0.000106   \\
+
+10  &     Monte Carlo & 0.144  &   0.100707 \\
+100  &     Monte Carlo & 0.2384  &   0.006307 \\
+1000  &    Monte Carlo & 0.24528   &   0.000573  \\
+10000  &    Monte Carlo & 0.247472  &   0.002765  \\
+100000  &    Monte Carlo & 0.245164 &    0.000457   \\
+1000000  &    Monte Carlo & 0.245026 &    0.000318   \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}
+\includegraphics[scale=0.8]{C:/Users/Kamil/Desktop/Praca Dyplomowa/Praca w latex/Obrazki/Błąd metod Monte Carlo dla funkcji sin(8x)}
+\caption{Wykres funkcji zdefiniowanej wzorem\eqref{Eq:polynomial}}
+\end{figure}
+
+
+Tabela \eqref{tabela9.6} przedstawia wyniki uzyskane z całkowania funkcji \eqref{Eq:polynomial} metodami Crude Monte Carlo oraz Monte Carlo.
+
+
+\begin{table}
+\centering 
+\caption{Tabela porównująca metodę Crude Monte Carlo oraz Monte Carlo dla funkcji wielomianowej}
+\label{tabela9.7}
+\begin{tabular}{lrrr}
+\toprule
+{l.podp} & Metoda &  I &  Błąd \\
+\midrule
+10  &     Crude & 13,43583  &   0,48847 \\
+100  &     Crude & 14,133026 &   0,208726 \\
+1000  &    Crude & 13,825492  &   0,098808  \\
+10000  &    Crude & 13,945694  &   0,021394  \\
+100000  &    Crude & 13,925673 &    0,001373   \\
+1000000  &    Crude & 13,92384 &    0,00046   \\
+
+10  &     Monte Carlo & 14,331923  &   0,407623 \\
+100  &     Monte Carlo & 13,895199 &   0,029101\\
+1000  &    Monte Carlo & 13,878592   &   0,045708  \\
+10000  &    Monte Carlo & 13,910085  &   0,014215  \\
+100000  &    Monte Carlo & 13,93213 &    0,00783   \\
+1000000  &    Monte Carlo & 13,92549 &    0,00119   \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}
+\includegraphics[scale=0.8]{C:/Users/Kamil/Desktop/Praca Dyplomowa/Praca w latex/Obrazki/Błąd metod Monte Carlo dla funkcji wielomianowej}
+\caption{Wykres funkcji zdefiniowanej wzorem\eqref{Eq:polynomial}}
+\end{figure}
 
 \section{Podsumowanie i wnioski końcowe}
 
