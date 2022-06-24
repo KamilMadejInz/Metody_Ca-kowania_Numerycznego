@@ -100,6 +100,21 @@ Istnieje wiele przypadków gdy całkowania numeryczne jest lepszym rozwiązaniem
 
 \clearpage
 
+\section{Użyte narzędzia}
+
+\subsection{Język Python}
+
+Python jest  wysokopoziomowym,interpertowanym,zorientowanym obiektowo językiem programowania, który w ostatnich latach zdobył wielką popularność i stał się głównym językiem wykorzystywanym w data science.\cite{Python_1} Pozwala on na przeprowadzanie złożonych obliczeń statystycznych, tworzenia wizualizacji danych, budowania algorytmów uczenia maszynowego, manipulowaniu i analizowaniu danych.\\
+Przy pomocy bibliotek takich jak matplotlib python daje olbrzymie możliwości wizualizacji danych przy pomocy całego szeregu dostępnych wykresów.
+Biblioteki takie jak TensorFlow i Keras, pozwalają na szybkie i efektowne tworzenie programów do analizy danych i uczenia maszynowego.\cite{Python_2}
+
+\subsection{Użyte biblioteki}
+
+NumPy to jedna z najpopularniejszych bibliotek Python'a, skupiająca się na obliczeniach naukowych. Dostarcza wielowymiarowe obiekty tablicowe, które są lepsze pod względem wydajności i szybkości od standardowych list występujących w Pythonie.\cite{Numpy_1} Tablice te są homogeniczne, co oznacza, że mogą przechowywać tylko jeden typ danych na raz.Ta restrykcja umożliwia oddelegowanie wykonywania matematycznych operacji na tablicy do zoptymalizowanego kodu w języku C, który jest znacznie szybszy od interpretera Pythona\cite{Numpy_2}\\
+
+Matplotlib jest biblioteką dostarczającą szeroki zakres funkcji do wizualizacji danych. Biblioteka ta jest rozszerzeniem biblioteki NumPy. Jako, że biblioteka jest darmowa, oraz zawiera proceduralny interfejs "Pylab", który został zaprojektowany tak, by w jak najbardziej przypominać MATLAB stanowi ona jego realną alternatywę.
+%f
+
 \section{Metody całkowania numerycznego}
 
 Istnieje wiele sposobów na obliczanie pola powierzchni pod krzywą przy pomocy metod numerycznych. Do dwóch najbardziej popularnych i poruszanych w tej pracy należą:
@@ -458,7 +473,7 @@ Dla metod Monte Carlo skuteczność liczona będzie ilością punktów potrzebny
 W adaptacyjnej metodzie trapezów miarą skuteczności będzie ilość wywołań funkcji, potrzebna do uzyskania zadanej dokładności przybliżenia funkcji.
 
 
-Dokładność wszystkich metod całkowania zostanie zbadana na podstawie poniższych funkcji:
+Dokładność wszystkich metod całkowania zostanie zbadana na podstawie funkcji wielomianowej \eqref{Eq:polynomial} oraz trygonometrycznej \eqref{Eq:trygonometric}. Dodatkowo funkcja \eqref{Eq:Oscillatory}, która cechuje się dużą zmiennością przy prawym krańcu przedziału całkowania zostanie użyta do zbadania wyższości metody adaptacyjnej trapezów nad zwykłą metodą trapezów.
 
 Funkcja wielomianoa
 \begin{equation}
@@ -466,7 +481,7 @@ f(x) = 225x^5 - 300x^4 + 420x^3-185x^2+35x + 1.4
 \label{Eq:polynomial}
 \end{equation}
 
-\begin{figure}
+\begin{figure}[h]
 \includegraphics[scale=0.8]{C:/Users/Kamil/Desktop/Praca Dyplomowa/Praca w latex/Obrazki/Polynomial}
 \caption{Wykres funkcji zdefiniowanej wzorem\eqref{Eq:polynomial}}
 \end{figure}
@@ -477,20 +492,20 @@ f(x) = sin(8x)
 \label{Eq:trygonometric}
 \end{equation}
 
-\begin{figure}
+\begin{figure}[h]
 \includegraphics[scale=0.8]{C:/Users/Kamil/Desktop/Praca Dyplomowa/Praca w latex/Obrazki/Trygonometric}
 \caption{Wykres funkcji zdefiniowanej wzorem\eqref{Eq:trygonometric}}
 \end{figure}
 
-Funkcja mieszana
+Funkcja oscylacyjna
 \begin{equation}
-f(x) = cos(2x+2) + 13x^2
-\label{Eq:mix}
+f(x) = (x+1)^2*cos((2*x+1)/(x-4.3))
+\label{Eq:Oscillatory}
 \end{equation}
 
-\begin{figure}
-\includegraphics[scale=0.8]{C:/Users/Kamil/Desktop/Praca Dyplomowa/Praca w latex/Obrazki/trygonometric_polynomial}
-\caption{Wykres funkcji zdefiniowanej wzorem\eqref{Eq:mix}}
+\begin{figure}[h]
+\includegraphics[scale=0.8]{C:/Users/Kamil/Desktop/Praca Dyplomowa/Praca w latex/Obrazki/Oscillatory}
+\caption{Wykres funkcji zdefiniowanej wzorem\eqref{Eq:Oscillatory}}
 \end{figure}
 
 \subsection{Przykład użycia biblioteki}
@@ -957,6 +972,8 @@ Tabela \eqref{tabela7.2} przedstawia wyniki uzyskanie z działania metody Monte 
 \end{tabular}
 \end{table}
 
+\clearpage
+
 \subsection{Porównanie zbieżności}
 
 Tabela \eqref{tabela9.1} przedstawia porównanie metod całkowania opartych o interpolację wielomianową dla 2 podprzedziałów.
@@ -964,7 +981,7 @@ Jak widzimy metodą dającą najgorszy wynik jest Metoda Trapezów, zwraca ona w
 Metoda Simpsona daje o 1 rząd wielkości błąd mniejszy niż metody trapezów i prostokątów. 
 Metoda Gaussa Legendrea uzyskała błąd prawie o połowę niższy niż metoda Simpsona.
 
-\begin{table}
+\begin{table}[h]
 \centering 
 \caption{Tabela porównująca metody całkowania oparte na interpolacji wielomianem dla 2 podprzedziałów }
 \label{tabela9.1}
@@ -988,7 +1005,7 @@ W metodzie Simpsona wraz z podwojeniem podprzedziałów błąd zmniejsza się o 
 Metoda Gaussa Legendrea daje wynik dokładny dla wielomianów stopnia $2n-1$, w związku z czym już dla 3 węzłów zwróciła ona wynik dokładny.
 
 
-\begin{table}
+\begin{table}[h]
 \centering 
 \caption{Tabela porównująca metody całkowania oparte na interpolacji wielomianem dla 4 podprzedziałów }
 \label{tabela9.2}
@@ -1005,13 +1022,12 @@ Metoda Gaussa Legendrea daje wynik dokładny dla wielomianów stopnia $2n-1$, w 
 \end{table}
 
 
-
 Porównanie metody Simpsona oraz Gaussa Legendra dla funkcji trygonometrycznej.
 
 Jak widać w tabeli \eqref{tabela9.3} początkowoa metoda Simpsona wykazuje dokładniejsze przybliżenie całki niż metoda Gaussa Legendre'a, przy 6 podprzedziałach zwraza błąd 10-krotnie mniejszy. Dopiero gdy liczba podprzedziałów wynosi 8 metoda Gaussa okazuje się być lepsza i zwracać błąd mniejszy o 2 rzędy wielkości. 
 Przy 10 podprzedziałach kwadratura Gaussa zwraca wynik dokładny jeśli zaokrąglimy analitycznie obliczoną całkę do 6 miejsca po przecinkuo.
 
-\begin{table}
+\begin{table}[h]
 \centering 
 \caption{Tabela porównująca Gaussa i Simpsona }
 \label{tabela9.3}
@@ -1024,6 +1040,7 @@ Przy 10 podprzedziałach kwadratura Gaussa zwraca wynik dokładny jeśli zaokrą
 6  &     Simpsona &  0.528331  &   2.836232e-01  \\
 8  &     Simpsona & 0.284161 &   3.945382e-02  \\
 10 &     Simpsona & 0.257320 &   1.261270e-02  \\
+\midrule
 2  &     Gaussa Legendre & -0.184912 &  4.296190e-01   \\
 4  &     Gaussa Legendre & -0.611561 &  8.562686e-01   \\
 6  &     Gaussa Legendre & 0.212634 &  3.207296e-02   \\
@@ -1041,7 +1058,7 @@ Porównanie metody Trapezów i Adaptacyjnej metody trapezów dla funkcji
 
 Tabela \eqref{tabela9.4} przedstawia porównanie Metody Trapezów i Adaptacyjnej Metody Trapezów. Porównanie zostało przeprowadzone na funkcji \eqref{Eq:polynomial}. Funkcja ta wraz ze wzrostem wartości argumentów przyjmuje coraz większą wartość, przez co żeby metoda mogła osiągnąć zadeklarowaną dokładność, dzieli prawą stronę równania na mniejsze podprzedziały, gdzie zwykła metoda trapezów dzieli funkcję na podprzedziały równo rozmieszczone wzdłuż całego przedziału całkowania. Stąd wynik uzyskany przez metodę trapezów jest 2-krotnie dokładniejszy dla ostatnich dwóch iteracji pokazanych w tabeli.
 
-\begin{table}
+\begin{table}[h]
 \centering 
 \caption{Tabela porównująca metodę trapezów i adaptacyjną metodę Trapezów}
 \label{tabela9.4}
@@ -1055,7 +1072,7 @@ Tabela \eqref{tabela9.4} przedstawia porównanie Metody Trapezów i Adaptacyjnej
 10  &    Trapezów & 14.158947  &   0.234647  \\
 12  &    Trapezów & 14.056336 &    0.132036  \\
 16 &     Trapezów & 13.998575  &   0.074275  \\
-
+\midrule
 4  &     Adaptacyjna & 15.1072 &   1.1829 \\
 6  &     Adaptacyjna & 14.236700 &   0,3124 \\
 8  &     Adaptacyjna & 14,08788  &   0,16358  \\
@@ -1073,7 +1090,7 @@ Liczba podprzedziałów nie jest parametrem metody adaptacyjnej dlatego została
 Dla 4 podprzedziałów widzimy, że zadana tolerancja była na tyle duża, że metoda adaptacyjna podzieliła przedział całkowania w ten sam sposób co metoda trapezów.
 Wraz ze wzrostem ilości podprzedziałów adaptacyjna metoda wykazuje znacznie lepszą dokładność w przybliżaniu całki. Dla 98 podprzedziałów błąd metody adaptacyjnej jest o 2 rzędy wielkości mniejszy niż przy zwykłej metodzie trapezów.
 
-\begin{table}
+\begin{table}[h]
 \centering 
 \caption{Tabela porównująca metodę trapezów i adaptacyjną metodę Trapezów}
 \label{tabela9.5}
@@ -1083,16 +1100,16 @@ Wraz ze wzrostem ilości podprzedziałów adaptacyjna metoda wykazuje znacznie l
 \midrule
 4  &     Trapezów & 9.731300  &   12.556630 \\
 8  &     Trapezów & -8.227000 &   -5.401670 \\
-10  &     Trapezów & 7.068914   &   9.894244  \\
+10  &    Trapezów & 7.068914   &   9.894244  \\
 18  &    Trapezów & 5.822512  &   -2.997182  \\
 46  &    Trapezów & -2.827854 &    -0.002524   \\
 56 &     Trapezów & -1.467744  &   1.357586  \\
 98 &     Trapezów & 2.295961 &   0.529369  \\
-
+\midrule
 4  &     Adaptacyjna & 9.731300 &   -12.556630 \\
 8  &     Adaptacyjna & -9.439613 &   6.614283 \\
-10  &     Adaptacyjna & -11.1515886  &   8.326258  \\
-18  &     Adaptacyjna & -3.881971 &  1.056641  \\
+10  &    Adaptacyjna & -11.1515886  &   8.326258  \\
+18  &    Adaptacyjna & -3.881971 &  1.056641  \\
 46  &    Adaptacyjna & -2.868944 &   0.043614  \\
 56 &     Adaptacyjna & -2.846306 &    0.020976  \\
 98 &     Adaptacyjna & -2.825574 &    0.000244  \\
@@ -1106,7 +1123,7 @@ Porównanie metod Monte Carlo
 
 Tabela \eqref{tabela9.6} przedstawia wyniki z całkowania funkcji \eqref{Eq:trygonometric} metodami Crude Monte Carlo oraz Monte Carlo.
 
-\begin{table}
+\begin{table}[h]
 \centering 
 \caption{Tabela porównująca metodę Crude Monte Carlo oraz Monte Carlo dla funkcji trgonometrycznej}
 \label{tabela9.6}
@@ -1120,7 +1137,7 @@ Tabela \eqref{tabela9.6} przedstawia wyniki z całkowania funkcji \eqref{Eq:tryg
 10000  &    Crude & 0.245071  &   0.000364  \\
 100000  &    Crude & 0.244593 &    0.000115   \\
 1000000  &    Crude & 0.244602 &    0.000106   \\
-
+\midrule
 10  &     Monte Carlo & 0.144  &   0.100707 \\
 100  &     Monte Carlo & 0.2384  &   0.006307 \\
 1000  &    Monte Carlo & 0.24528   &   0.000573  \\
@@ -1140,7 +1157,7 @@ Tabela \eqref{tabela9.6} przedstawia wyniki z całkowania funkcji \eqref{Eq:tryg
 Tabela \eqref{tabela9.6} przedstawia wyniki uzyskane z całkowania funkcji \eqref{Eq:polynomial} metodami Crude Monte Carlo oraz Monte Carlo.
 
 
-\begin{table}
+\begin{table}[h]
 \centering 
 \caption{Tabela porównująca metodę Crude Monte Carlo oraz Monte Carlo dla funkcji wielomianowej}
 \label{tabela9.7}
@@ -1154,7 +1171,7 @@ Tabela \eqref{tabela9.6} przedstawia wyniki uzyskane z całkowania funkcji \eqre
 10000  &    Crude & 13,945694  &   0,021394  \\
 100000  &    Crude & 13,925673 &    0,001373   \\
 1000000  &    Crude & 13,92384 &    0,00046   \\
-
+\midrule
 10  &     Monte Carlo & 14,331923  &   0,407623 \\
 100  &     Monte Carlo & 13,895199 &   0,029101\\
 1000  &    Monte Carlo & 13,878592   &   0,045708  \\
@@ -1189,7 +1206,11 @@ Według potrzeb zawarte i uporządkowane uzupełnienie pracy o dowolny materiał
 \addcontentsline{toc}{section}{Literatura}
 
 \begin{thebibliography}{4}
-\bibitem{Intro1} https://en.wikipedia.org/wiki/Numerical\_integration
+\bibitem{Iront1} https://en.wikipedia.org/wiki/Numerical\_integration
+\bibitem{Python_1} https://www.python.org/doc/essays/blurb/
+\bibitem{Python_2} https://www.coursera.org/articles/what-is-python-used-for-a-beginners-guide-to-using-python
+\bibitem{Numpy_1} https://www.w3schools.com/python/numpy/numpy\_intro.asp
+\bibitem{Numpy_2} https://www.pythonlikeyoumeanit.com/Module3\_IntroducingNumpy/VectorizedOperations.html
 \bibitem{wikipedia} https://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas
 \bibitem{web} Willie Aboumrad, CME 108/MATH 114 Introduction to Scientific Computing
 \bibitem{rect} https://www.cs.mcgill.ca/
