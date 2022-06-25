@@ -86,7 +86,11 @@ Podstawowym problemem całkowania numerycznego jest obliczenie przybliżonego ro
 \end{equation}
 
 z pewnym stopniem dokładności\\
-Do uzyskania tego celu opracowanych zostało wiele algorytmów. Najpopularniejsze z nich zostały bliżej omówionę w rozdziale 2.
+
+Całkę oznaczoną można zdefiniować jako pole powierzchni pod wykresem funkcji, do uzyskania tego celu opracowanych zostało wiele algorytmów całkowania numerycznego.\\
+Najprostszym z nich jest metoda prostokątów, przybliżająca obszar pod krzywą za pomocą prostokątów o równej szerokości.
+Dokładność przybliżenia można poprawić, dzieląc przedział całkowania na większą liczbę prostokątów o mniejszej szerokości.
+Na metodę prostokątów można spojrzeć jako na interpolację krzywej za pomocą funkcji stałej. Dokładność przybliżenia można zwiększyć stosując wielomiany wyższego rzędu(metoda Trapezów, metoda Simpsona) lub zrezygnować z równo rozmieszczonych węzłów na rzecz nierównego rozmieszczenia(metody Gaussa).
 
 \paragraph{Cel całkowania numerycznego}\mbox{} \\
 
@@ -94,26 +98,11 @@ Istnieje wiele przypadków gdy całkowania numeryczne jest lepszym rozwiązaniem
 \begin{itemize}
 	\item gdy całka z funkcji $f(x)$ znana jest jedynie dla pojedyńczych punktów, na przykład w przypadku próbkowania
 	\item gdy wzór całki jest znany, ale znalezienie funkcji pierwotnej jest bardzo skomplikowane lub nie możliwe do zrobienia. Przykładem takiej funkcji jest $f(x) = exp(-x^2)$
-	\item gdy znalezienie funkcji pierwotnej jest możliwe analitycznie, ale obliczenie numeryczne jest prostsze. Taki przypadek może wysąpić, gdy funkcja pierwotna jest dana jako nieskończony szereg lib iloczyn.
+	\item gdy znalezienie funkcji pierwotnej jest możliwe analitycznie, ale obliczenie numeryczne jest prostsze. Taki przypadek może wysąpić, gdy funkcja pierwotna jest dana jako nieskończony szereg lub iloczyn.
 \end{itemize}
 \cite{Intro1}
 
 \clearpage
-
-\section{Użyte narzędzia}
-
-\subsection{Język Python}
-
-Python jest  wysokopoziomowym,interpertowanym,zorientowanym obiektowo językiem programowania, który w ostatnich latach zdobył wielką popularność i stał się głównym językiem wykorzystywanym w data science.\cite{Python_1} Pozwala on na przeprowadzanie złożonych obliczeń statystycznych, tworzenia wizualizacji danych, budowania algorytmów uczenia maszynowego, manipulowaniu i analizowaniu danych.\\
-Przy pomocy bibliotek takich jak matplotlib python daje olbrzymie możliwości wizualizacji danych przy pomocy całego szeregu dostępnych wykresów.
-Biblioteki takie jak TensorFlow i Keras, pozwalają na szybkie i efektowne tworzenie programów do analizy danych i uczenia maszynowego.\cite{Python_2}
-
-\subsection{Użyte biblioteki}
-
-NumPy to jedna z najpopularniejszych bibliotek Python'a, skupiająca się na obliczeniach naukowych. Dostarcza wielowymiarowe obiekty tablicowe, które są lepsze pod względem wydajności i szybkości od standardowych list występujących w Pythonie.\cite{Numpy_1} Tablice te są homogeniczne, co oznacza, że mogą przechowywać tylko jeden typ danych na raz.Ta restrykcja umożliwia oddelegowanie wykonywania matematycznych operacji na tablicy do zoptymalizowanego kodu w języku C, który jest znacznie szybszy od interpretera Pythona\cite{Numpy_2}\\
-
-Matplotlib jest biblioteką dostarczającą szeroki zakres funkcji do wizualizacji danych. Biblioteka ta jest rozszerzeniem biblioteki NumPy. Jako, że biblioteka jest darmowa, oraz zawiera proceduralny interfejs "Pylab", który został zaprojektowany tak, by w jak najbardziej przypominać MATLAB stanowi ona jego realną alternatywę.
-%f
 
 \section{Metody całkowania numerycznego}
 
@@ -163,7 +152,7 @@ W metodzie Newtona-Cotesa wagi poszczególnych węzłów otrzymywane są poprzez
 
 \subsubsection{Metoda prostokątów}
 
-Metoda prostokątów to najprostszy wariant metody Newtona-Cotesa gdzie całkę $\int_a^b f(x)$ przybliżamy przy użyciu interpolacji wielomianem Lagrange'a stopnia 1.
+Metoda prostokątów to najprostszy wariant metody Newtona-Cotesa gdzie całkę $\int_a^b f(x)$ przybliżamy przy użyciu interpolacji wielomianem Lagrange'a stopnia 0, czyli funkcji stałej.
 Dla pojedyńczego podprzedziału metoda prostokątów wygląda następująco:
 \begin{equation}
 \int_a^b f(x) = I = f(a)*h
@@ -203,7 +192,7 @@ def f_rectI(f,a,b,n):
 
 
 \subsubsection{Metoda trapezów}
-Metoda trapezów to kolejny wariant metody Newtona-Cotesa, w którym całkę $\int_a^b f(x)$ przybliżamy przy użyciu wielomianu Lagrange'a stopnia 2.
+Metoda trapezów to kolejny wariant metody Newtona-Cotesa, w którym całkę $\int_a^b f(x)$ przybliżamy przy użyciu wielomianu Lagrange'a stopnia 1, czyli funkcji liniowej.
 Dla pojedyńczego podprzedziału metoda trapezów wygląda następująco:
 \begin{equation}
 \int_a^b f(x) =  \frac{1}{2}*h[f(a) + f(b)]
@@ -248,7 +237,7 @@ def f_trapI(f, a, b, n):
 \label{Listing 2}
 
 \subsubsection{Metoda Simpsona}
-Metoda Simpsona zwana też metodą parabol, to kolejny wariant metody Newtona-Cotesa. Tym razem całkę $\int_a^b f(x)$ przybliżamy przy użyciu wielomianu Lagrange'a stopnia 3, czyli paraboli.
+Metoda Simpsona zwana też metodą parabol, to kolejny wariant metody Newtona-Cotesa. Tym razem całkę $\int_a^b f(x)$ przybliżamy przy użyciu wielomianu Lagrange'a stopnia 2, czyli paraboli.
 
 Dla pojedyńczego podprzedziału metoda trapezów wygląda następująco:
 \begin{equation}
@@ -287,18 +276,18 @@ def f_simp2I(f,a,b,n):
 
 \subsection{Kwadratury Gaussa}
 Kwadratury Gaussa to metody numeryczne służące do przybliżania skończonych całek, najcześciej określane jako ważona suma wartości funkcji w określonych punktach dziedziny całkowania.
-Całkowanie metodą Gauss'a opiera się na użyciu wielomianów to przybliżenia funkcji podcałkowej $f(x)$ na przedziale [-1,1], poprzez użycie odpowiednich węzłów $x_i$ oraz wag $w_i$.
+Całkowanie metodą Gauss'a opiera się na użyciu wielomianów do przybliżenia funkcji podcałkowej $f(x)$ na przedziale [-1,1], poprzez użycie odpowiednich węzłów $x_i$ oraz wag $w_i$.
 	
 \begin{equation}
 \int_{-1}^{1} f(x) dx \approx \sum_{i=1}^{n} w_if(x_i)
 \label{Eq:rownanie}
 \end{equation}
 
-Dokładność i optymalność wyniku całkowania zależy od odpowiedniego wyboru wielomianu interpolacyjnego. Użycie wielomianów Legendre'a całkowanie metodą Gaussa daje dokładny wynik dla wilomianów stopnia $2n-1$ lub niższego. 
+Dokładność i optymalność wyniku całkowania zależy od odpowiedniego wyboru wielomianu interpolacyjnego. Gdy życie wielomianów Legendre'a całkowanie metodą Gaussa daje dokładny wynik dla wilomianów stopnia $2n-1$ lub niższego. 
 
 
 \subsubsection{Gauss Legrande}
-Kwadratura Gaussa-Legendre'a jest specjalny przypadek kwadratury Gaussa, która pozwala na efektywne przyblienie funkcji ze znanym zachowaniem asymptotycznym na brzegach przedziału całkowania. Kwadratura Gaussa jest szczególnie zalecana, jeśli całka jest holomorficzna w sąsiedztwie przediału całkowania.
+Kwadratura Gaussa-Legendre'a jest specjalny przypadek kwadratury Gaussa, która pozwala na efektywne przyblienie funkcji ze znanym zachowaniem asymptotycznym na brzegach przedziału całkowania. Kwadratura Gaussa jest szczególnie zalecana, jeśli całka jest holomorficzna w sąsiedztwie przedziału całkowania.
 
 Węzły $x_i$ są pierwiastkami wielomianu Legendre'a $P(x)$ stopnia n. Nie istnieje prosty sposób wyznaczenia pierwiastków $x_i$, mogę one jednak zostać aproksymowane z dużo dokładnością przy użyciu wzoru:
 
@@ -339,13 +328,12 @@ def f_gauss_legrande(f,a,b,n):
 \end{lstlisting}
 \label{Listing 4}
 
-
 \subsection{Metody adaptacyjne}
 
 Tradycyjne metody całkowania Newtona-Cotesa, ignorują fakt, że całkowana funkcja posiada regiony o dużej, jak i małej zmienności.
 Metody adaptacyjne rozwiązują ten problem poprzez dostosowanie wielkości podprzedziałów, na mniejsze, w miejscach gdzie funkcja zmienia się gwałtownie i większe, w miejscach o mniejszej zmienności.\cite{adaptive}
 
-Metody adaptacyjne polegają na wykorzystaniu tradycyjnych metod całkowania takich jak: Metoda Spimsona, trapezów do obliczenia całki na przedziale [a,b] a zadaną dokładnością $\xi$. Jeśli po pierwszej iteracji wartość całki nie jest dostatecznie dokładna, to przedział dzielimy na połowy, i ponownie całkujemy każdą z otrzymanych połówek. Proces ten powtarzamy do uzyskania zadanej dokładności.\cite{adaptive2}
+Metody adaptacyjne polegają na wykorzystaniu tradycyjnych metod całkowania takich jak: Metoda Simpsona, trapezów do obliczenia całki na przedziale [a,b] z zadaną dokładnością $\xi$. Jeśli po pierwszej iteracji wartość całki nie jest dostatecznie dokładna, to przedział dzielimy na połowy, i ponownie całkujemy każdą z otrzymanych połówek. Proces ten powtarzamy do uzyskania zadanej dokładności.\cite{adaptive2}
 
 Całkowita wartość całki jest obliczana jako suma przybliżeń całki na wszystkich podprzedziałach.
 
@@ -364,11 +352,6 @@ Listing 5 pokazuje przykładowy kod w języku Python implementujący adaptacyjn�
 
 \begin{lstlisting}[caption={Kod w języku python implementujący metodę simpsona}]
 
-def f_trapI(f,xa,xb):
-    h = xb-xa
-    I = h*(f(xa) + f(xb))/2
-    return I
-
 def f_adapt(f,ax,bx,tol):
     m = (ax+bx)/2.0
     P1 = f_trapI(f,ax,m)
@@ -377,7 +360,7 @@ def f_adapt(f,ax,bx,tol):
     if abs(P1 - P2 ) < 3 * tol:
         return  P2
     else:
-        return f_adapt(f,ax,m,tol/2) + f_adapt(f,m,bx,tol)
+        return f_adapt(f,ax,m,tol) + f_adapt(f,m,bx,tol)
 
 \end{lstlisting}
 \label{Listing 5}
@@ -401,9 +384,30 @@ Przybliżoną wartość całki otrzymujemy dzieląc uzyskaną średnią wartoś�
 \label{Eq:MonteCarlo2}
 \end{equation}
 
+\begin{lstlisting}[caption={Kod w języku python implementujący metodę Crude Monte Carlo}]
+	import numpy as np
+def f_crudeMonteC(f,a,b,n):
+
+    h = (b - a) / n
+
+    X = (b-a)*np.random.random_sample(n)+a
+    Y = []
+
+    for i in range(0, n):
+        Y.append(f(X[i]))
+
+    Y = np.array(Y)
+
+    I = h*Y
+    I = np.sum(I)
+    return I
+
+\end{lstlisting}
+\label{Listing 5}
 
 \subsubsection{Monte Carlo}
-Bardziej dokładną wersją jest metoda Monte Carlo, która polega na wylosowaniu $n$ punktów znajdujących się w polu kwadratu, który wyznaczany jest przez przedział całkowania $<a,b>$ oraz zakres wartości funkcji w tym przedziale $<f(a),f(b)>$. Po wylosowaniu $n$ punktów wartość całki wyrażana jest jako:
+Bardziej dokładną wersją jest metoda Monte Carlo, która polega na wylosowaniu $n$ punktów znajdujących się w polu kwadratu, który wyznaczany jest przez przedział całkowania $<a,b>$ oraz zakres wartości funkcji w tym przedziale $<f(a),f(b)>$.
+Metoda ta daje lepsze przybiżenie całki, lecz musimy znać minimalną i maksymalną wartość jaką przyjmuje funkcja na danym przedziale. Po wylosowaniu $n$ punktów wartość całki wyrażana jest jako:
 
 \begin{equation}
 I = P * \frac{c}{n}
@@ -413,11 +417,38 @@ gdzie c to ilość punktów leżących się pod krzywą.\\
 
 Wraz ze zwiększaniem ilości losowanych punktów, rozkładają się one bardziej równomiernie w obrębie wyznaczonego prostokąta, dając coraz dokładniejszy wynik.\cite{MonteCarlo_2}
 
-\section{Bibliotek do całkowania numerycznego}
-Następne podrozdziały przedstawiają wyniki i omówienie działania zaimplementowanych przeze mnie metod całkowania dla równan \eqref{Eq:polynomial} \eqref{Eq:trygonometric} \eqref{Eq:mix}. Dla metod całkowania, których logiką działania jest liczenie całki przez podział przedziału całkowania na podprzedziały, skuteczność metody wyrażana będzie w ilości podprzedziałów, na które musiał zostać podzielony przedział całkowania, by otrzymać dokładnoć przybliżenia rzędu $0.01$ lub jeśli to możliwe, dokładną wartość całki.
-Dla metod Monte Carlo skuteczność liczona będzie ilością punktów potrzebnych do uzyskania zadowalającej dokładności.
-W adaptacyjnej metodzie trapezów miarą skuteczności będzie ilość wywołań funkcji, potrzebna do uzyskania zadanej dokładności przybliżenia funkcji.
 
+\section{Użyte narzędzia}
+
+\subsection{Język Python}
+
+Python jest  wysokopoziomowym,interpertowanym,zorientowanym obiektowo językiem programowania, który w ostatnich latach zdobył wielką popularność i stał się głównym językiem wykorzystywanym w data science.\cite{Python_1} Pozwala on na przeprowadzanie złożonych obliczeń statystycznych, tworzenia wizualizacji danych, budowania algorytmów uczenia maszynowego, manipulowaniu i analizowaniu danych.\\
+Przy pomocy bibliotek takich jak matplotlib python daje olbrzymie możliwości wizualizacji danych przy pomocy całego szeregu dostępnych wykresów.
+Biblioteki takie jak TensorFlow i Keras, pozwalają na szybkie i efektowne tworzenie programów do analizy danych i uczenia maszynowego.\cite{Python_2}
+
+\subsection{Użyte biblioteki}
+
+NumPy to jedna z najpopularniejszych bibliotek Python'a, skupiająca się na obliczeniach naukowych. Dostarcza wielowymiarowe obiekty tablicowe, które są lepsze pod względem wydajności i szybkości od standardowych list występujących w Pythonie.\cite{Numpy_1} Tablice te są homogeniczne, co oznacza, że mogą przechowywać tylko jeden typ danych na raz.Ta restrykcja umożliwia oddelegowanie wykonywania matematycznych operacji na tablicy do zoptymalizowanego kodu w języku C, który jest znacznie szybszy od interpretera Pythona\cite{Numpy_2}\\
+
+Matplotlib jest biblioteką dostarczającą szeroki zakres funkcji do wizualizacji danych. Biblioteka ta jest rozszerzeniem biblioteki NumPy. Jako, że biblioteka jest darmowa, oraz zawiera proceduralny interfejs "Pylab", który został zaprojektowany tak, by w jak najbardziej przypominać MATLAB stanowi ona jego realną alternatywę.
+
+\subsection{Środowisko Jupyter Notebook}
+
+
+Jupyter notebook to interaktywna aplikacja internetowa pozwalająca na tworzenie i udostępnianie dokumentów obliczeniowych.\cite{Notebook_1}.
+Dokumenty te są bazowanymi na przeglądarce interaktywnymi programami zwanymi REPL(read-eval-print loop). Programy tego typu pobierają od użytkownika dane, wykonują ję, a następnie zwracają użytkownikowi wynik.\cite{Notebook_2}.
+W strukturę tworzonego dokumentu wchodzą komórki zawierające kod programu,tekst,wykresy lub media interaktwyne(animacje,pilki wideo,pliki audio). Pod warstwą wizualną Jupyter Notebook znajduje się dokument JSON, zwykle kończący się rozszerzeniem ".ipynb".
+	Dokumenty tworzone w środowisku Jupyter mogą zostać przekonwertowane na wiele popularnych formatów(HTML, LaTeX,PDF, Markdwon) oraz być udostępniane innym użytkownikom przy pomocy emaila, Dropbox'a. GitHub'a lub za pomocą Jupyter Notebook Viewer.\cite{Notebook_3}
+\newline
+Paltforma Jupyter przy użyciu może połączyć się z wieloma kernelami, które pozwalają na wykonywanie kodu w ponad 100 jezykw programowania, wliczając w to obecnie najpopularniejsze takie jak Python, Java, R, Matlab, Octave i wiele innych.\cite{Notebook_4}. Mnogość dostępnych języków pozwala osobą tworzącym dokumenty na wybranie odpowiedniego języka dla konkretnych zastosowań. Niezależnie od wybranego języka inteffejs użytkownika pozostaje taki sam.
+
+
+
+
+\section{Bibliotek do całkowania numerycznego}
+Następne podrozdziały przedstawiają wyniki i omówienie działania zaimplementowanych przeze mnie metod całkowania dla równan \eqref{Eq:polynomial} \eqref{Eq:trygonometric} \eqref{Eq:mix}. Dla metod całkowania, których logiką działania jest liczenie całki przez podział przedziału całkowania na mniejsze części, skuteczność metody wyrażana będzie w ilości podprzedziałów, na które musiał zostać podzielony przedział całkowania, by otrzymać dokładnoć przybliżenia rzędu $0.01$ lub jeśli to możliwe, dokładną wartość całki.
+Dla metod Monte Carlo skuteczność liczona będzie ilością punktów potrzebnych do uzyskania zadowalającej dokładności.
+W adaptacyjnej metodzie trapezów miarą skuteczności będzie ilość podprzedziałów, potrzebna do uzyskania zadanej dokładności przybliżenia funkcji.
 
 Dokładność wszystkich metod całkowania zostanie zbadana na podstawie funkcji wielomianowej \eqref{Eq:polynomial} oraz trygonometrycznej \eqref{Eq:trygonometric}. Dodatkowo funkcja \eqref{Eq:Oscillatory}, która cechuje się dużą zmiennością przy prawym krańcu przedziału całkowania zostanie użyta do zbadania wyższości metody adaptacyjnej trapezów nad zwykłą metodą trapezów.
 
@@ -454,7 +485,9 @@ f(x) = (x+1)^2*cos((2*x+1)/(x-4.3))
 \caption{Wykres funkcji zdefiniowanej wzorem\eqref{Eq:Oscillatory}}
 \end{figure}
 
+\clearpage
 \subsection{Przykład użycia biblioteki}
+
 
 \subsubsection{Metoda prostokątów}
 	Funkcja implementująca metodę prostokątów, przyjmuje 4 parametry. Pierwszym parametrem jest badana funkcja, drugim początek dolny przedział całkowania, trzecim górny przedział całkowania, a ostatnim, ilość podprzedziałów na które dzielimy odcinek $[a,b]$. Metoda zwraca przybliżoną wartość całki.
@@ -466,7 +499,11 @@ f(x) = (x+1)^2*cos((2*x+1)/(x-4.3))
 	
 \begin{lstlisting}[caption={Kod w języku python implementujący metodę prostokątów}]
 def f_rectI(f,a,b,n):
-    """
+ 	      :param fun: funkcja
+          :param a: dolny przedzial calkowania
+          :param b: gorny przedzial calkowania
+          :param n: ilosc podprzedzialow, na ktore dzielimy odcinek <a,b>
+          :return: przyblizona wartosc calki
     """
 \end{lstlisting}
 \label{Listing 6}
@@ -560,6 +597,11 @@ Funkcja implementująca metodę trapezów, przyjmuje dokładnie te same parametr
 \begin{lstlisting}[caption={Kod w języku python implementujący metodę trapezów}]
 def f_trapI(f, a, b, n):
     """
+     	  :param fun: funkcja
+          :param a: dolny przedzial calkowania
+          :param b: gorny przedzial calkowania
+          :param n: ilosc podprzedzialow, na ktore dzielimy odcinek <a,b>
+          :return: przyblizona wartosc calki
     """
 \end{lstlisting}
 \label{Listing 7}
@@ -612,19 +654,7 @@ Metoda trapezów przyjmuję wartość z zadaną dokładnością przy ilości pod
 2  &      -1.269118 &       3 & -1.513825 \\
 3  &      -0.223984 &       4 & -0.468692 \\
 4  &      -0.011437 &       5 & -0.256145 \\
-5  &       0.078969 &       6 & -0.165739 \\
-6  &       0.127564 &       7 & -0.117144 \\
-7  &       0.157125 &       8 & -0.087583 \\
-8  &       0.176585 &       9 & -0.068122 \\
-9  &       0.190131 &      10 & -0.054577 \\
-10 &       0.199961 &      11 & -0.044746 \\
-11 &       0.207333 &      12 & -0.037375 \\
-12 &       0.213008 &      13 & -0.031699 \\
-13 &       0.217474 &      14 & -0.027233 \\
-14 &       0.221053 &      15 & -0.023654 \\
-15 &       0.223967 &      16 & -0.020740 \\
-16 &       0.226371 &      17 & -0.018336 \\
-17 &       0.228379 &      18 & -0.016329 \\
+4  &      *&       * & * \\
 18 &       0.230073 &      19 & -0.014635 \\
 19 &       0.231515 &      20 & -0.013192 \\
 20 &       0.232754 &      21 & -0.011954 \\
@@ -640,6 +670,11 @@ Metoda trapezów przyjmuję wartość z zadaną dokładnością przy ilości pod
 \begin{lstlisting}[caption={Kod w języku python implementujący metodę prostokątów}]
 def f_simp2I(f,a,b,n):
     """
+     	  :param fun: funkcja
+          :param a: dolny przedzial calkowania
+          :param b: gorny przedzial calkowania
+          :param n: ilosc podprzedzialow, na ktore dzielimy odcinek <a,b>
+          :return: przyblizona wartosc calki
     """
 \end{lstlisting}
 \label{Listing 8}
@@ -691,6 +726,11 @@ Tabela \eqref{tabela3.2} przedstawia wyniki uzyskanie z działania metody Simpso
 \begin{lstlisting}[caption={Kod w języku python implementujący metodę trapezów}]
 def f_gauss_legrande(f,a,b,n):
     """
+          :param fun: funkcja
+          :param a: dolny przedzial calkowania
+          :param b: gorny przedzial calkowania
+          :param n: ilosc podprzedzialow, na ktore dzielimy odcinek <a,b>
+          :return: przyblizona wartosc calki
     """
 \end{lstlisting}
 \label{Listing 9}
@@ -742,6 +782,11 @@ Tabela \eqref{tabela4.2} przedstawia wyniki uzyskanie z działania metody Gaussa
 \begin{lstlisting}[caption={Kod w języku python implementujący metodę trapezów}]
 def f_adapt(f,ax,bx,tol):
     """
+    		:param fun: funkcja
+            :param ax: dolny przedzial calkowania
+            :param bx: gorny przedzial calkowania
+            :param tol: tolerancja
+            :return: przyblizona wartosc calki
     """
 \end{lstlisting}
 \label{Listing 10}
@@ -811,6 +856,11 @@ Tabela \eqref{tabela5.2} przedstawia wyniki uzyskanie z działania metody Adapta
 \begin{lstlisting}[caption={Kod w języku python implementujący metodę Crude Monte Carlo}]
 def f_crudeMonteC(f,a,b,n):
     """
+    		:param fun: funkcja
+            :param ax: dolny przedzial calkowania
+            :param bx: gorny przedzial calkowania
+            :param n: ilosc losowych punktow
+            :return: przyblizona wartosc calki
     """
 \end{lstlisting}
 \label{Listing 11}
@@ -872,6 +922,11 @@ Dalsze 1-krotne zwiększanie ilości użytych punktów  daje około 7-krotne zmn
 \begin{lstlisting}[caption={Kod w języku python implementujący metodę Monte Carlo}]
 def f_MonteC(f,a,b,n):
     """
+    		:param fun: funkcja
+            :param ax: dolny przedzial calkowania
+            :param bx: gorny przedzial calkowania
+            :param n: ilosc losowych punktow
+            :return: przyblizona wartosc calki
     """
 \end{lstlisting}
 \label{Listing 11}
@@ -1157,6 +1212,11 @@ Według potrzeb zawarte i uporządkowane uzupełnienie pracy o dowolny materiał
 \bibitem{Python_2} https://www.coursera.org/articles/what-is-python-used-for-a-beginners-guide-to-using-python
 \bibitem{Numpy_1} https://www.w3schools.com/python/numpy/numpy\_intro.asp
 \bibitem{Numpy_2} https://www.pythonlikeyoumeanit.com/Module3\_IntroducingNumpy/VectorizedOperations.html
+\bibitem{Notebook_1}
+\bibitem{Notebook_1} https://jupyter.org/
+\bibitem{Notebook_2} https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop
+\bibitem{Notebook_3} https://en.wikipedia.org/wiki/Project\_Jupyter
+\bibitem{Notebook_4} https://jupyter4edu.github.io/jupyter-edu-book/jupyter.html
 \bibitem{wikipedia} https://en.wikipedia.org/wiki/Newton%E2%80%93Cotes_formulas
 \bibitem{web} Willie Aboumrad, CME 108/MATH 114 Introduction to Scientific Computing
 \bibitem{rect} https://www.cs.mcgill.ca/
