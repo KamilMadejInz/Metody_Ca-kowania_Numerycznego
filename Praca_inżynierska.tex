@@ -1,5 +1,4 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-%%% %
 %%% % weiiszablon.tex
 %%% % The Faculty of Electrical and Computer Engineering
 %%% % Rzeszow University Of Technology diploma thesis Template
@@ -76,32 +75,35 @@
 
 \section{Wstęp/wprowadzenie}
 
-Pomimo tego, że dokładny wynik uzyskiwany przez analityczne obliczenie całki jest porządany, rzeczywiste problemy z jakimi mierzą się inżynierzy rzadko pozwalają na takie rozwiązanie.
+Pomimo tego, że dokładny wynik uzyskiwany przez analityczne obliczenie całki jest porządany, rzeczywiste problemy z jakimi mierzą się inżynierowie rzadko pozwalają na takie rozwiązanie.
 W związku z tym, całkowanie numeryczne jest niezastąpionym narzędziem w ich pracy. Całkowanie numeryczne można spotkać w praktycznie każdej dziedzinie naukowej, lecz podejście to jest szczególnie powszechne podczas przetwarzania losowych danych fizycznych, które nie są zgodne z żadną ciągłą, deterministyczną funkcją.
 
-Podstawowym problemem całkowania numerycznego jest obliczenie przybliżonego rozwiązanai całki oznaczonej z pewnym stopniem dokładności.
-Z definicji całka z pewnej funkcji $f(x)$ na przedziale $[a,b]$ może być przedstawiona jako pole powierzchni pomiędzy krzywą a osią odciętych. 
-Wzór na całkę oznaczoną przedstawia wzór \eqref{equation_1}
+Podstawowym problemem całkowania numerycznego jest obliczenie przybliżonego rozwiązania całki oznaczonej z pewnym stopniem dokładności.
+Całka z pewnej funkcji $f(x)$ na przedziale $[a,b]$ może być przedstawiona jako pole powierzchni pomiędzy krzywą a osią odciętych. 
+Wzór na całkę oznaczoną przedstawia wzór
 
 \begin{equation}
 \int_a^b f(x) dx
 \end{equation}
 
-Z twierdzenia rachunku wiemy, że funkcje ciągłe mają dokładne rozwiązanie analityczne. Oznaczają funkcję pierwotną jako $F(x)$, wiemy że całkę oznaczoną liczymy ze wzoru.
+Z twierdzenia Newtona- Leibniza wiemy, że funkcje ciągłe mają dokładne rozwiązanie analityczne. Oznaczają funkcję pierwotną jako $F(x)$, wiemy że całkę oznaczoną liczymy ze wzoru.
 
 \begin{equation}
 \int_a^b f(x)dx = F(b) - F(a)
 \end{equation}\\
 
-W praktyce znalezienie funkcji pierwotnej jest niezwykle trudne lub niemożliwe, przez co konieczne jest zastosowanie całkowania numerycznego.
-Najprostszym sposobem na uzyskanie numerycznego przybliżenia całki oznaczonej jest zastosowanie sumy Riemanna.
-Zasadniczo, można ją zdefiniować na wiele różnych sposobów.\\
+gdzie $F(x) = \int f(x)dx$ to dowonla funkcja pierwotna funkcji f na tym przedziale.\\
+
+W praktyce znalezienie funkcji pierwotnej jest niezwykle trudne lub niemożliwe, przez co konieczne jest zastosowanie całkowania numerycznego.\\
+Jednym ze sposobów na uzyskanie numerycznego przybliżenia całki oznaczonej jest zastosowanie sumy Riemanna.
+Zasadniczo, można ją zdefiniować na wiele różnych sposobów.
 Najprostszym z nich jest metoda prostokątów, przybliżająca obszar pod krzywą za pomocą prostokątów.
-Bardziej zaawansowaną formą sumy Riemanna są metoda Trapezów, metoda Simpsona oraz metody Gaussa.
-Dokładność przybliżeni apowyższych metodh można poprawić, dzieląc przedział całkowania na większą liczbę firgur o mniejszej szerokości.
+Bardziej zaawansowaną formą sumy Riemanna są metoda trapezów, metoda Simpsona oraz metody Gaussa.
+Dokładność przybliżenia wymienionych metod można poprawić, dzieląc przedział całkowania na większą liczbę figur o mniejszej szerokości.
 \newline
-Innym numerycznym sposobem na obliczenie całki jest metoda Monte Carlo, opracowana i pierwszy raz zastosowana przez Stanisława Ulama.
-Obliczanie całki tą metodą polega na losowym próbkowaniu funkcji na zadanym przedziale, a nastepnie obliczenie jaki procent wylosowanych punktów znajduje pod wykresem funkcji.\cite{Intro_1}
+
+	Innym numerycznym sposobem na obliczenie całki jest metoda Monte Carlo, opracowana i pierwszy raz zastosowana przez Stanisława Ulama.
+Obliczanie całki tą metodą polega na losowym próbkowaniu funkcji na zadanym przedziale, a nastepnie obliczenie jaki procent wylosowanych punktów znajduje pod wykresem funkcji\cite{Intro_1}.
 
 \paragraph{Cel całkowania numerycznego}\mbox{} \\
 
@@ -109,9 +111,9 @@ Istnieje wiele przypadków gdy całkowania numeryczne jest lepszym rozwiązaniem
 \begin{itemize}
 	\item gdy całka z funkcji $f(x)$ znana jest jedynie dla pojedyńczych punktów, na przykład w przypadku stabelaryzowanych danych
 	\item gdy wzór całki jest znany, ale znalezienie funkcji pierwotnej jest bardzo skomplikowane lub nie możliwe do zrobienia. Przykładem takiej funkcji jest $f(x) = exp(-x^2)$
-	\item gdy znalezienie funkcji pierwotnej jest możliwe analitycznie, ale obliczenie numeryczne jest prostsze. Taki przypadek może wysąpić, gdy funkcja pierwotna jest dana jako nieskończony szereg lub iloczyn.
+	\item gdy znalezienie funkcji pierwotnej jest możliwe analitycznie, ale obliczenie numeryczne jest prostsze. Taki przypadek może wysąpić, gdy funkcja pierwotna jest dana jako nieskończony szereg lub iloczyn\cite{Intro_2}.
 \end{itemize}
-\cite{Intro_2}
+
 
 \clearpage
 
@@ -119,8 +121,7 @@ Istnieje wiele przypadków gdy całkowania numeryczne jest lepszym rozwiązaniem
 
 \subsection{Metody Netwona-Cotesa}
 
-W analizie matematycznej, metodami Newtona-Cotesa, nazywamy grupę metod do całkowania numerycznego, które bazują na oszacowaniu wartości całki na skończonym przedziale, przy użyciu interpolacji wielomianem odpowiedniego stopnia, wyznaczając $n+1$ równo rozmieszczonych punktów, które dzielą przedział całkowania na $n$ podprzedziałów.
-\cite{wikipedia}
+W analizie matematycznej, metodami Newtona-Cotesa, nazywamy grupę metod do całkowania numerycznego, które bazują na oszacowaniu wartości całki na skończonym przedziale, przy użyciu interpolacji wielomianem odpowiedniego stopnia, wyznaczając $n+1$ równo rozmieszczonych punktów, które dzielą przedział całkowania na $n$ podprzedziałów\cite{wikipedia}.
 
 Metodę Newtona-Cotesa dla $n+1$ punktów  można zdefiniować jako:
 
@@ -135,21 +136,19 @@ $x_i$ jest zbiorem równo rozmieszczonych punktów z przedziału [a,b]\\
 a $w_i$ jest zbiorem wag
 
 
-W metodzie Newtona-Cotesa wagi poszczególnych węzłów otrzymywane są poprzez interpolację wielomianem Lagrange'a:
+W metodzie Newtona-Cotesa wagi poszczególnych węzłów otrzymywane są poprzez interpolację wielomianem Lagrange'a\cite{web}:
 
 \begin{equation}
-\int_a^b f(x) dx \approx \int_a^b p(x) dx = \int_a^b \sum_{i=0}^{n} f_i L_{n,j}(x) dx = \sum_{i=0}^{n}(\int_a^b L_{n,j}(x)dx)f_i = \sum_{i=0}^{n} w_i f_i
+\int_a^b f(x) dx \approx \int_a^b p(x) dx = \int_a^b \sum_{i=0}^{n} f_i L_{n,j}(x) dx = \sum_{i=0}^{n}(\int_a^b L_{n,j}(x)dx)f_i = \sum_{i=0}^{n} w_i f_i 
 \label{Eq:rownanie}
 \end{equation}
-
-\cite{web}
 
 \clearpage	
 
 \subsubsection{Metoda prostokątów}
 
 Metoda prostokątów to najprostszy wariant metody Newtona-Cotesa gdzie całkę $\int_a^b f(x)$ przybliżamy przy użyciu interpolacji wielomianem Lagrange'a stopnia 0, czyli funkcji stałej.
-Dla pojedyńczego podprzedziału metoda prostokątów wygląda następująco:
+Dla pojedynczego podprzedziału metoda prostokątów wygląda następująco:
 \begin{equation}
 \int_a^b f(x) = I = f(a)*h
 \label{Eq:rownanie}
@@ -162,8 +161,8 @@ dla n podprzedziałów metoda prostokątów przybiera formę:
 \label{Eq:rownanie}
 \end{equation}
 
-gdzie h jest szerokością pojedyńczego podprzedziału i równa się $h = \frac{b-a}{n}$  \cite{rect}
-
+gdzie h jest szerokością pojedyńczego podprzedziału i równa się $h = \frac{b-a}{n}$ \cite{rect}.
+\newline
 Listing 1 pokazuje przykładowy kod w języku Python implementujący metodą trapezów.
 \begin{lstlisting}[caption={Kod w języku python implementujący metodę prostokątów}]
 import numpy as np
@@ -189,7 +188,7 @@ def f_rectI(f,a,b,n):
 
 \subsubsection{Metoda trapezów}
 Metoda trapezów to kolejny wariant metody Newtona-Cotesa, w którym całkę $\int_a^b f(x)$ przybliżamy przy użyciu wielomianu Lagrange'a stopnia 1, czyli funkcji liniowej.
-Dla pojedyńczego podprzedziału metoda trapezów wygląda następująco:
+Dla pojedynczego podprzedziału metoda trapezów wygląda następująco:
 \begin{equation}
 \int_a^b f(x) =  \frac{1}{2}*h[f(a) + f(b)]
 \label{Eq:rownanie}
@@ -206,7 +205,6 @@ Listing 2 pokazuje przykładowy kod w języku Python implementujący metodą tra
 
 \begin{lstlisting}[caption={Kod w języku python implementujący metodę trapezów}]
 import numpy as np
-
 
 def f_trapI(f, a, b, n):
     h = (b - a) / n
@@ -250,10 +248,8 @@ dla n podprzedziałów metoda prostokątów przybiera formę:
 
 Listing 3 pokazuje przykładowy kod w języku Python implementujący metodą simpsona.
 
-\begin{lstlisting}[caption={Kod w języku python implementujący metodę simpsona}]
-
+\begin{lstlisting}[caption={Kod w języku python implementujący metodę Simpsona}]
 def f_simp2I(f,a,b,n):
-
     h = (b-a)/n
 
     I = f(a) + f(b)
@@ -271,7 +267,7 @@ def f_simp2I(f,a,b,n):
 \label{Listing 2}
 
 \subsection{Kwadratura Gaussa Legendre'a}
-Kwadratury Gaussa to metody numeryczne służące do przybliżania skończonych całek, najcześciej określane jako ważona suma wartości funkcji w określonych punktach dziedziny całkowania.
+Kwadratury Gaussa to metody numeryczne służące do przybliżania skończonych całek, najczęściej określane jako ważona suma wartości funkcji w określonych punktach dziedziny całkowania.
 Całkowanie metodą Gauss'a opiera się na użyciu wielomianów do przybliżenia funkcji podcałkowej $f(x)$ na przedziale [-1,1], poprzez użycie odpowiednich węzłów $x_i$ oraz wag $w_i$.
 	
 \begin{equation}
@@ -279,9 +275,9 @@ Całkowanie metodą Gauss'a opiera się na użyciu wielomianów do przybliżenia
 \label{Eq:Gauss}
 \end{equation}
 
-Dokładność i optymalność wyniku całkowania zależy od odpowiedniego wyboru wielomianu interpolacyjnego. Użycie wielomianów Legendre'a sprawoe, że całkowanie metodą Gaussa daje dokładny wynik dla wielomianów stopnia $2n-1$ lub niższego. 
+Dokładność i optymalność wyniku całkowania zależy od odpowiedniego wyboru wielomianu interpolacyjnego. Użycie wielomianów Legendre'a sprawia, że całkowanie metodą Gaussa daje dokładny wynik dla wielomianów stopnia $2n-1$ lub niższego. \\
 
-Kwadratura Gaussa-Legendre'a jest specjalny przypadek kwadratury Gaussa, która pozwala na efektywne przyblienie funkcji ze znanym zachowaniem asymptotycznym na brzegach przedziału całkowania. Kwadratura Gaussa jest szczególnie zalecana, jeśli całka jest holomorficzna w pewnym sąsiedztwie przedziału całkowania.
+Kwadratura Gaussa-Legendre'a jest formą kwadratury Gaussa, która pozwala na efektywne przybliżanie funkcji ze znanym zachowaniem asymptotycznym na brzegach przedziału całkowania. Kwadratura Gaussa jest szczególnie zalecana, jeśli całka jest holomorficzna w pewnym sąsiedztwie przedziału całkowania.
 
 Węzły $x_i$ są pierwiastkami wielomianu Legendre'a $P(x)$ stopnia n. Nie istnieje prosty sposób wyznaczenia pierwiastków $x_i$, mogę one jednak zostać aproksymowane z dużo dokładnością przy użyciu wzoru:
 
@@ -299,7 +295,7 @@ w_i = \frac{2(1-x_i^2)}{[nP_{n-1}(x_i)]^2} = \frac{2}{[P_n^1(x_i)]^2}
 
 W równaniu \eqref{Eq:Gauss} można zauważyć, że całkujemy funkcję w granicy od -1 do 1. Zabieg ten został poczyniony by uprościć obliczenia matematyczne i w sposób jak najbardziej możliwy uogólnić metodę. 
 
-Do sprowadzenia dowolnej granicy całkowania do do postaci -1 do 1, posłuży dodatkowa zmienna $x_d$, która jest w sposób liniowy związana ze zmienną $x$:
+Do sprowadzenia dowolnej granicy całkowania do granicy -1 do 1, posłuży dodatkowa zmienna $x_d$, która jest w sposób liniowy związana ze zmienną $x$:
 
 \begin{equation}
 x = a_0 + a_1(-1)
@@ -313,7 +309,7 @@ a = a_0 + a1(-1)
 \label{x}
 \end{equation} 
 
-Podobnie postępujemy z górną granicą,, $x = b$, odpowiada $x_d = 1$, co daje 
+Podobnie postępujemy z górną granicą, $x = b$, odpowiada $x_d = 1$, co daje 
 
 \begin{equation}
 b = a_0 + a_1(1)
@@ -329,7 +325,7 @@ a_0 = \frac{b+a}{2}
 oraz
 
 \begin{equation}
-a_0 = \frac{b-a}{2}
+a_1 = \frac{b-a}{2}
 \end{equation}
 
 po podstawieniu do wzoru \eqref{limit} otrzymujemy
@@ -345,13 +341,11 @@ Po zróżniczkowaniu równania \eqref{equation_2} orzymujemy
 dx = \frac{b-a}{2} dx_d
 \end{equation}
 
-
-\cite{limits_of_int}
-
+\cite{limits_of_int}\\
 
 Listing 4 pokazuje przykładowy kod w języku Python implementujący kwadrature Gauss Legendre'a.
 
-\begin{lstlisting}[caption={Kod w języku python implementujący metodę simpsona}]
+\begin{lstlisting}[caption={Kod w języku python implementujący metodę Gaussa Legendre'a}]
 
 import numpy as np
 
@@ -374,14 +368,14 @@ def f_gauss_legrande(f,a,b,n):
 \subsection{Metody adaptacyjne}
 
 Tradycyjne metody całkowania Newtona-Cotesa, ignorują fakt, że całkowana funkcja posiada regiony o dużej, jak i małej zmienności.
-Metody adaptacyjne rozwiązują ten problem poprzez dostosowanie wielkości podprzedziałów, na mniejsze, w miejscach gdzie funkcja zmienia się gwałtownie i większe, w miejscach o mniejszej zmienności.\cite{adaptive}
+Metody adaptacyjne rozwiązują ten problem poprzez dostosowanie wielkości podprzedziałów, na mniejsze, w miejscach gdzie funkcja zmienia się gwałtownie i większe, w miejscach o mniejszej zmienności\cite{adaptive}.
 
-Metody adaptacyjne polegają na wykorzystaniu tradycyjnych metod całkowania takich jak: Metoda Simpsona, trapezów do obliczenia całki na przedziale [a,b] z zadaną dokładnością $\xi$. Jeśli po pierwszej iteracji wartość całki nie jest dostatecznie dokładna, to przedział dzielimy na połowy, i ponownie całkujemy każdą z otrzymanych połówek. Proces ten powtarzamy do uzyskania zadanej dokładności.\cite{adaptive2}
+Metody adaptacyjne polegają na wykorzystaniu tradycyjnych metod całkowania takich jak: Metoda Simpsona, trapezów do obliczenia całki na przedziale [a,b] z zadaną dokładnością $\xi$. Jeśli po pierwszej iteracji wartość całki nie jest dostatecznie dokładna, to przedział dzielimy na połowy, i ponownie całkujemy każdą z otrzymanych połówek. Proces ten powtarzamy do uzyskania zadanej dokładności\cite{adaptive2}.
 
 Całkowita wartość całki jest obliczana jako suma przybliżeń całki na wszystkich podprzedziałach.
 
-Na przykładzie metody trapezów adaptacyjna metoda wygląda następująco
-Przedziale $[a,b]$ jest dzielona na $n$ podprzedziałów $[a_j,b_j]$, dla j = $0,1,...,n-1$, a następnie dla każdego podprzedziału obliczana jest całka według wzoru:
+Na przykładzie metody trapezów adaptacyjna metoda wygląda następująco:
+Przedział $[a,b]$ jest dzielony na $n$ podprzedziałów $[a_j,b_j]$, dla j = $0,1,...,n-1$, a następnie dla każdego podprzedziału obliczana jest całka według wzoru:
 
 \begin{equation}
 I_j(f) = \int_{a_j}^{b_j}f(x) dx
@@ -389,12 +383,11 @@ I_j(f) = \int_{a_j}^{b_j}f(x) dx
 \end{equation}
 
 Powyższe podejście nie różni się niczym od klasycznej metody trapezów, jednak w metodach adaptacyjnych podprzedział $[a_j,b_j]$ jest dzielony na pół, gdy wartość $I_j(f)$ nie została obliczona z zadaną dokładnością.
-Do ustalenia dokładności, obliczamy całkę na przedziale $[a_j,b_j]$, by uzyskać przybliżenie $I1$, a następnie całkujemy funkcję dzieląc przedział $[a_j,b_j]$ na dwa podprzedziały, by obliczyć drugie przybliżenie $I_2$. Jeśli $I_1$ oraz $I_2$ są dostatecznie zbliżone, wtedy możemy stwierdzić, że przybliżenie jest wystarczające i nie ma potrzeby dalszego dzielenia $[a_j,b_j]$. W przeciwnym przypadku dzielimy $[a_j,b_j]$ na dwa podprzedziały i powtarzamy proces ponownie. Używamy tej techniki na wszystkich podprzedziałach tak długo, aż funkcja podcałkowa $f$ zostanie przybliżona z zadaną dokładnością.\cite{adaptive3}
+Do ustalenia dokładności, obliczamy całkę na przedziale $[a_j,b_j]$, by uzyskać przybliżenie $I_1$, a następnie całkujemy funkcję dzieląc przedział $[a_j,b_j]$ na dwa podprzedziały, by obliczyć drugie przybliżenie $I_2$. Jeśli $I_1$ oraz $I_2$ są dostatecznie zbliżone, wtedy możemy stwierdzić, że przybliżenie jest wystarczające i nie ma potrzeby dalszego dzielenia $[a_j,b_j]$. W przeciwnym przypadku dzielimy $[a_j,b_j]$ na dwa podprzedziały i powtarzamy proces ponownie. Używamy tej techniki na wszystkich podprzedziałach tak długo, aż funkcja podcałkowa $f$ zostanie przybliżona z zadaną dokładnością\cite{adaptive3}.\\
 
 Listing 5 pokazuje przykładowy kod w języku Python implementujący adaptacyjną metodę trapezów.
 
 \begin{lstlisting}[caption={Kod w języku python implementujący metodę simpsona}]
-
 def f_adapt(f,a,b,tol):
     m = (a+b)/2.0
     P1 = f_trapI(f,a,m)
@@ -410,10 +403,11 @@ def f_adapt(f,a,b,tol):
 
 \subsection{Metody Monte Carlo}
 
-Metoda Monte Carlo to zupełnie odmienne od metod Newtona Cotesa oraz metod Gaussa podejście do obliczania wartości całki. Polega ona na obliczaniu pola powierzchni pod krzywą używając losowo rozmieszczonych punktów w obrębie granic całkowania.\\
+Metoda Monte Carlo to zupełnie odmienne od metod Newtona Cotesa oraz metod Gaussa podejście do obliczania wartości całki.
+Wspomniane metody używają równo lub w sposób przemyślany rozmieszczonych węzłów, natomiast metoda Monte Carlo polega na obliczaniu pola powierzchni pod krzywą używając losowo rozmieszczonych punktów w obrębie granic całkowania.\\
 
 \subsubsection{Crude Monte Carlo}
-Podstawowa metoda Mone Carlo, zwana też Crude Monte Carlo polega  na wylosowaniu $n$ punktów w obrębie przedziału całkowania i na podstawie tych danych obliczenie średniej wartości funkcji. \cite{MonteCarlo_1}
+Podstawowa metoda Mone Carlo, zwana też Crude Monte Carlo polega  na wylosowaniu $n$ punktów w obrębie przedziału całkowania i na podstawie tych danych obliczenie średniej wartości funkcji\cite{MonteCarlo_1}. 
 
 \begin{equation}
 f_{sr} = \frac{f(x_1)+f(x_2) + ... + f(x_n)}{n}
@@ -425,6 +419,8 @@ Przybliżoną wartość całki otrzymujemy dzieląc uzyskaną średnią wartoś�
  I = f_{sr} * |b-a| 
 \label{Eq:MonteCarlo2}
 \end{equation}
+
+Listing 6 pokazuje przykładowy kod w języku Python implementujący metodę Crude Monte Carlo.
 
 \begin{lstlisting}[caption={Kod w języku python implementujący metodę Crude Monte Carlo}]
 	import numpy as np
@@ -448,8 +444,8 @@ def f_crudeMonteC(f,a,b,n):
 \label{Listing 6}
 
 \subsubsection{Monte Carlo}
-Bardziej dokładną wersją jest metoda Monte Carlo, która polega na wylosowaniu $n$ punktów znajdujących się w polu kwadratu, który wyznaczany jest przez przedział całkowania $<a,b>$ oraz zakres wartości funkcji w tym przedziale $<f(a),f(b)>$.
-Metoda ta daje lepsze przybiżenie całki, lecz musimy znać minimalną i maksymalną wartość jaką przyjmuje funkcja na danym przedziale. Po wylosowaniu $n$ punktów wartość całki wyrażana jest jako:
+Inna wersją tego sposobu całkowania jest metoda Monte Carlo, która polega na wylosowaniu $n$ punktów znajdujących się w polu kwadratu, który wyznaczany jest przez przedział całkowania $<a,b>$ oraz zakres wartości funkcji w tym przedziale $<f(a),f(b)>$.
+Metoda ta daje lepsze przybiżenie całki, lecz musimy znać minimalną i maksymalną wartość jaką przyjmuje funkcja na danym przedziale, w przeciwnym wypadku wartości te są ustalane na postawie wylosowanych punktów, co może powodować duży błąd w obliczniu całki. Po wylosowaniu $n$ punktów wartość całki wyrażana jest jako:
 
 \begin{equation}
 I = P * \frac{c}{n}
@@ -457,7 +453,9 @@ I = P * \frac{c}{n}
 
 gdzie c to ilość punktów leżących się pod krzywą.\\
 
-Wraz ze zwiększaniem ilości losowanych punktów, rozkładają się one bardziej równomiernie w obrębie wyznaczonego prostokąta, dając coraz dokładniejszy wynik.\cite{MonteCarlo_2}
+Wraz ze zwiększaniem ilości losowanych punktów, rozkładają się one bardziej równomiernie w obrębie wyznaczonego prostokąta, dając coraz dokładniejszy wynik\cite{MonteCarlo_2.}\\
+
+Listing 7 pokazuje przykładowy kod w języku Python implementujący metodę Monte Carlo.
 
 \begin{lstlisting}[caption={Kod w języku python implementujący metodę Crude Monte Carlo}]
 import numpy as np
@@ -470,7 +468,6 @@ def f_MonteC(f,a,b,n,min,max):
     Y = []
     for i in range(0, n):
         Y.append(f(X[i]))
-
 
     Yi = np.random.uniform(minY,maxY,n) 
    
@@ -492,35 +489,90 @@ def f_MonteC(f,a,b,n,min,max):
 
 \subsection{Język Python}
 
-Python jest  wysokopoziomowym,interpertowanym,zorientowanym obiektowo językiem programowania, który w ostatnich latach zdobył wielką popularność i stał się głównym językiem wykorzystywanym w data science.\cite{Python_1} Pozwala on na przeprowadzanie złożonych obliczeń statystycznych, tworzenia wizualizacji danych, budowania algorytmów uczenia maszynowego, manipulowaniu i analizowaniu danych.\\
+Python jest  wysokopoziomowym,interpertowanym,zorientowanym obiektowo językiem programowania, który w ostatnich latach zdobył wielką popularność i stał się głównym językiem wykorzystywanym w data science\cite{Python_1}. Pozwala on na przeprowadzanie złożonych obliczeń statystycznych, tworzenia wizualizacji danych, budowania algorytmów uczenia maszynowego, manipulowanie i analizowanie danych.\\
 Przy pomocy bibliotek takich jak matplotlib python daje olbrzymie możliwości wizualizacji danych przy pomocy całego szeregu dostępnych wykresów.
-Biblioteki takie jak TensorFlow i Keras, pozwalają na szybkie i efektowne tworzenie programów do analizy danych i uczenia maszynowego.\cite{Python_2}
+Biblioteki takie jak TensorFlow i Keras, pozwalają na szybkie i efektowne tworzenie programów do analizy danych i uczenia maszynowego\cite{Python_2}.
 
 \subsection{Użyte biblioteki}
 
-NumPy to jedna z najpopularniejszych bibliotek Python'a, skupiająca się na obliczeniach naukowych. Dostarcza wielowymiarowe obiekty tablicowe, które są lepsze pod względem wydajności i szybkości od standardowych list występujących w Pythonie.\cite{Numpy_1} Tablice te są homogeniczne, co oznacza, że mogą przechowywać tylko jeden typ danych na raz.Ta restrykcja umożliwia oddelegowanie wykonywania matematycznych operacji na tablicy do zoptymalizowanego kodu w języku C, który jest znacznie szybszy od interpretera Pythona\cite{Numpy_2}\\
+NumPy to jedna z najpopularniejszych bibliotek Python'a, skupiająca się na obliczeniach naukowych. Dostarcza wielowymiarowe obiekty tablicowe, które są lepsze pod względem wydajności i szybkości od standardowych list występujących w Pythonie\cite{Numpy_1}. Tablice te są homogeniczne, co oznacza, że mogą przechowywać tylko jeden typ danych na raz.Ta restrykcja umożliwia oddelegowanie wykonywania matematycznych operacji na tablicy do zoptymalizowanego kodu w języku C, który jest znacznie szybszy od interpretera Pythona\cite{Numpy_2}.\\
 
-Matplotlib jest biblioteką dostarczającą szeroki zakres funkcji do wizualizacji danych. Biblioteka ta jest rozszerzeniem biblioteki NumPy. Jako, że jest darmowa, oraz zawiera proceduralny interfejs "Pylab", który został zaprojektowany tak, by w jak najbardziej przypominać MATLAB stanowi ona jego realną alternatywę.
+Matplotlib jest biblioteką dostarczającą szeroki zakres funkcji do wizualizacji danych. Biblioteka ta jest rozszerzeniem biblioteki NumPy. Jako, że jest darmowa, oraz zawiera proceduralny interfejs "Pylab", który został zaprojektowany tak, by jak najbardziej przypominał MATLAB stanowi ona jego realną alternatywę.
 
 \subsection{Środowisko Jupyter Notebook}
 
-
 Jupyter notebook to interaktywna aplikacja internetowa pozwalająca na tworzenie i udostępnianie dokumentów obliczeniowych.\cite{Notebook_1}.
-Dokumenty te są bazowanymi na przeglądarce interaktywnymi programami zwanymi REPL(read-eval-print loop). Programy tego typu pobierają od użytkownika dane, wykonują ję, a następnie zwracają użytkownikowi wynik.\cite{Notebook_2}.
+Dokumenty te są bazowanymi na przeglądarce interaktywnymi programami zwanymi REPL(read-eval-print loop). Programy tego typu pobierają od użytkownika dane, wykonują ję, a następnie zwracają użytkownikowi wynik\cite{Notebook_2}.
 W strukturę tworzonego dokumentu wchodzą komórki zawierające kod programu,tekst,wykresy lub media interaktwyne(animacje,pilki wideo,pliki audio). Pod warstwą wizualną Jupyter Notebook znajduje się dokument JSON, zwykle kończący się rozszerzeniem ".ipynb".
-	Dokumenty tworzone w środowisku Jupyter mogą zostać przekonwertowane na wiele popularnych formatów(HTML, LaTeX,PDF, Markdwon) oraz być udostępniane innym użytkownikom przy pomocy emaila, Dropbox'a. GitHub'a lub za pomocą Jupyter Notebook Viewer.\cite{Notebook_3}
+	Dokumenty tworzone w środowisku Jupyter mogą zostać przekonwertowane na wiele popularnych formatów(HTML, LaTeX,PDF, Markdwon) oraz być udostępniane innym użytkownikom przy pomocy emaila, Dropbox'a. GitHub'a lub za pomocą Jupyter Notebook Viewer\cite{Notebook_3}.
 \newline
-Paltforma Jupyter przy użyciu może połączyć się z wieloma kernelami, które pozwalają na wykonywanie kodu w ponad 100 jezykw programowania, wliczając w to obecnie najpopularniejsze takie jak Python, Java, R, Matlab, Octave i wiele innych.\cite{Notebook_4}. Mnogość dostępnych języków pozwala osobą tworzącym dokumenty na wybranie odpowiedniego języka dla konkretnych zastosowań. Niezależnie od wybranego języka inteffejs użytkownika pozostaje taki sam.
+Paltforma Jupyter może połączyć się z wieloma kernelami, które pozwalają na wykonywanie kodu w ponad 100 jezykw programowania, wliczając w to obecnie najpopularniejsze takie jak Python, Java, R, Matlab, Octave i wiele innych\cite{Notebook_4}. Mnogość dostępnych języków pozwala osobą tworzącym dokumenty na wybranie odpowiedniego języka dla konkretnych zastosowań. Niezależnie od wybranego języka inteffejs użytkownika pozostaje taki sam.
 
+\section{Instrukcja laporatoryjna}
+Jednym z elementów niniejszej pracy inżynierskiej było stworzenie laboratorium dla przedmiotu "Metody Numeryczne".
+Laboratorium zostało stworzone przy pomocy opisanej wyżej platformy Jupyter Notebook oraz zaimplementowane zostały w nim opisane w poprzednim rozdziale metod całkowania.
+
+Całość dokumentu wchodzącego w skład labratorium można podzielić na 4 części.
+
+Na samym początku notatnika umieszczony został spis treści widoczny na rysunku \ref{spis} , w którym zobaczyć można całą strukturę dokumentu. 
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.8]{C:/Users/Kamil/Desktop/Praca Dyplomowa/Praca w latex/Obrazki/Jupyter/spis}
+\caption{Spis treść z instrukcji laboratoryjnej}
+\label{spis}
+\end{figure}
+
+Kolejnym segmentem dokumentu jest krótki wstęp teoretyczny, w którym opisane zostały zagadnienia takie jak: definicja całki nieoznaczonej, definicja całki oznaczonej, twierdzenie Newtona Leibniza.
+Rysunek \ref{teoria} pokazuje komórkę ze wstępem teoretycznym na temat całkowania
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{C:/Users/Kamil/Desktop/Praca Dyplomowa/Praca w latex/Obrazki/Jupyter/teoria}
+\caption{Rozdział teoretyczny o całkowaniu analitycznym}
+\label{teoria}
+\end{figure}
+
+Następnie umieszczona została seria ćwiczeń, polegających na uzupełnieniu kodu funkcji całkującej poprzedzona krótkim przybliżeniem teoretycznym danej metody całkowania oraz algorytmem, na którym bazowane są wspomniane metody.
+W opisie teoretycznym postawiono na zwięzłą formę, by student wykonujący tę instrukcję mógł sobie szybko przypomieć najważniejsze informacje o danych metodach całkowania. Algorytm jak i zaimplementowane funkcje zostały napisane w przystępny sposób, krok po kroku, więc nie powiniem sprawić trudności osobą wykonującym tę laboratorium.
+Rysunek \ref{cwiczenie} pokazuję przykładowe ćwiczenie z dokumenty Jupyter Notebook.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.6]{C:/Users/Kamil/Desktop/Praca Dyplomowa/Praca w latex/Obrazki/Jupyter/cwiczenie}
+\caption{Przykład ćwiczenia z instrukcji laboratoryjnej}
+\label{cwiczenie}
+\end{figure}
+
+Ostatnim elementem laboratorium pomagającym w lepszym wyobrażeniu metod całkowania są funkcję, które przedstawiają wizualizacje danej metody całkowania. Funkcje te zostały zaimplementowane w oparciu o metody dostarczone wraz z biblioteką matplotlib. 
+Przykład funkcji przedstawiającej wizualizację metody prostokątów jest widoczny na rysunku \ref{prostokat}.
+
+\begin{figure}[H]
+\centering
+\includegraphics[scale=0.8]{C:/Users/Kamil/Desktop/Praca Dyplomowa/Praca w latex/Obrazki/Jupyter/trap}
+\caption{Funkcja wizualizująca metodę prostokątów}
+\label{prostokat}
+\end{figure}
 
 \section{Bibliotek do całkowania numerycznego}
 Następne podrozdziały przedstawiają wyniki i omówienie działania zaimplementowanych przeze mnie metod całkowania dla równan \eqref{Eq:polynomial} \eqref{Eq:trygonometric} \eqref{Eq:Oscillatory}. 
 
 Dla metod dzielących przedział całkowania na mniejsze części, skuteczność wyrażana będzie jako ilośc wspomnianych podprzedziałów potrzebnych do obliczenia całki z dokładnością $0.01$.
-Skuteczność metod Monte Carlo liczona będzie ilością punktów potrzebnych do uzyskania zadowalającej dokładności.
+Skuteczność metod Monte Carlo liczona będzie ilością losowych punktów potrzebnych do uzyskania zadowalającej dokładności.
 W adaptacyjnej metodzie trapezów miarą skuteczności będzie ilość podprzedziałów, potrzebna do uzyskania zadanej dokładności przybliżenia funkcji.
 
-Rezultaty z działania wszystkich metod całkowania zostaną zbadane na podstawie funkcji wielomianowej \eqref{Eq:polynomial} oraz trygonometrycznej \eqref{Eq:trygonometric}. Dodatkowo funkcja \eqref{Eq:Oscillatory}, która cechuje się dużą zmiennością przy prawym krańcu przedziału całkowania zostanie użyta do zbadania wyższości metody adaptacyjnej trapezów nad zwykłą metodą trapezów.
+Rezultaty z działania wszystkich metod całkowania zostaną zbadane na podstawie funkcji wielomianowej \eqref{Eq:polynomial} widocznej na rysunku \ref{wielomian} oraz trygonometrycznej \eqref{Eq:trygonometric}, którą przedstawia rysunek \ref{trygonometryczna}. Dodatkowo funkcja \eqref{Eq:Oscillatory} widoczna na rysunku \ref{oscylacyjna}, która cechuje się dużą zmiennością przy prawym krańcu przedziału całkowania zostanie użyta do zbadania wyższości metody adaptacyjnej trapezów nad zwykłą metodą trapezów.
+
+Wszystkie rezlutaty z działania funkcji zostaną przedstawione w tabelach. Dla zmniejszenia wielkości tabel, do opisu kolumn zostały użyte nazwy skrócone.\mbox{} \\
+Wykaz nazw używanych do opisu kolumn.\newline
+
+I - wartość całki\\
+E - błąd metody\\
+n - liczba podprzedziałów, na które została podzielona funkcja lub w przypadku metod Monte Carlo liczba użytych losowych punktów\\
+Tol - tolerancja z jaką aproksymowana była funkcja w metodzie adaptacyjnej.\\
+AVG - średnia wartość całki dla 100 iteracji w metodach Monte Carlo\\
+maxValue - maksymalna wartość uzyskana przy całkowaniu Monte Carlo dla zadanej ilości punktów\\
+minValue - minimalna wartość uzyskana przy całkowaniu Monte Carlo dla zadanej ilości punktów\\
+Metoda - nazwa metody całkującej\\
 
 Funkcja wielomianoa
 \begin{equation}
@@ -532,6 +584,7 @@ f(x) = 225x^5 - 300x^4 + 420x^3-185x^2+35x + 1.4
 \centering
 \includegraphics[scale=0.8]{C:/Users/Kamil/Desktop/Praca Dyplomowa/Praca w latex/Obrazki/Polynomial}
 \caption{Wykres funkcji zdefiniowanej wzorem\eqref{Eq:polynomial}}
+\label{wielomian}
 \end{figure}
 
 Funkcja trygonometryczna
@@ -544,6 +597,7 @@ f(x) = sin(8x)
 \centering
 \includegraphics[scale=0.8]{C:/Users/Kamil/Desktop/Praca Dyplomowa/Praca w latex/Obrazki/Trygonometric}
 \caption{Wykres funkcji zdefiniowanej wzorem\eqref{Eq:trygonometric}}
+\label{trygonometryczna}
 \end{figure}
 
 Funkcja oscylacyjna
@@ -556,6 +610,7 @@ f(x) = (x+1)^2*cos((2*x+1)/(x-4.3))
 \centering
 \includegraphics[scale=0.8]{C:/Users/Kamil/Desktop/Praca Dyplomowa/Praca w latex/Obrazki/Oscillatory}
 \caption{Wykres funkcji zdefiniowanej wzorem\eqref{Eq:Oscillatory}}
+\label{oscylacyjna}
 \end{figure}
 
 \clearpage
@@ -563,7 +618,7 @@ f(x) = (x+1)^2*cos((2*x+1)/(x-4.3))
 
 
 \subsubsection{Metoda prostokątów}
-	Funkcja implementująca metodę prostokątów, przyjmuje 4 parametry. Pierwszym parametrem jest badana funkcja, drugim początek dolny przedział całkowania, trzecim górny przedział całkowania, a ostatnim, ilość podprzedziałów na które dzielimy odcinek $[a,b]$. Metoda zwraca przybliżoną wartość całki.
+	Funkcja implementująca metodę prostokątów, przyjmuje 4 parametry. Pierwszym parametrem jest badana funkcja, drugim dolny przedział całkowania, trzecim górny przedział całkowania, a ostatnim, ilość podprzedziałów na które dzielimy odcinek $[a,b]$. Metoda zwraca przybliżoną wartość całki.
 	
 \begin{lstlisting}[caption={Kod w języku python implementujący metodę prostokątów}]
 def f_rectI(f,a,b,n):
@@ -578,57 +633,57 @@ def f_rectI(f,a,b,n):
 
 \paragraph{Funkcja wielomianowa}\mbox{} \\
 
-Tabela \eqref{tabela1.1} przedstawia dane otrzymane w wyniku działania implementacji metody Prostokątów dla funkcji \eqref{Eq:polynomial} na przedziale $[0,0.8]$.
-	Pierwszą kolumną tabeli jest obliczona wartość całki, drugą ilość podprzedziałów dla danej iteracji, a trzecią błąd metody wyrażony jako różnica wartości całki obliczonej 			analitycznie i wartości obliczonej numerycznie.\\
-	Jak widać w tabeli początkowo dla pojedyńczego podprzedziału błąd metody był bardzo duży i wynosił $-8.08110$. Wynika to z kształtu funkcji \eqref{Eq:polynomial}.\\
+Tabela \ref{tabela1.1} przedstawia dane otrzymane w wyniku działania implementacji metody prostokątów dla funkcji \eqref{Eq:polynomial} na przedziale $[0,0.8]$.
+	Pierwszą kolumną tabeli jest obliczona wartość całki, drugą ilość podprzedziałów dla danej iteracji, a trzecią błąd metody wyrażony jako różnica wartości całki obliczonej analitycznie i wartości obliczonej numerycznie.\\
+	Jak widać w tabeli początkowo dla pojedynczego podprzedziału błąd metody był bardzo duży i wynosił $-8.08110$. Wynika to z kształtu funkcji \eqref{Eq:polynomial}.\\
 	Do osiągnięcia założonej dokładności metoda prostokątów potrzebowała 31 podprzedziałów.
 
 \begin{table}[H]
 \centering 
 \caption{Dane z iteracji w metodzie prostokątów dla funkcji wielomianowej}
 \label{tabela1.1}
-\begin{tabular}{lrrr}
+\begin{tabular}{lll}
 \toprule
-{} &  Wartość całki &  l.podp &      Błąd \\
+  I &  n &      E \\
 \midrule
-1  &       5.843200 &       1 & -8.081100 \\
-2  &      11.635200 &       2 & -2.289100 \\
-3  &      12.884780 &       3 & -1.039520 \\
-4  &      13.335200 &       4 & -0.589100 \\
-5  &      13.545974 &       5 & -0.378326 \\
-6  &      13.661077 &       6 & -0.263223 \\
-7  &      13.730687 &       7 & -0.193613 \\
-8  &      13.775950 &       8 & -0.148350 \\
-9  &      13.807020 &       9 & -0.117280 \\
-10  &      13.829263 &      10 & -0.095037 \\
-11 &      13.845731 &      11 & -0.078569 \\
-12 &      13.858262 &      12 & -0.066038 \\
-13 &      13.868017 &      13 & -0.056283 \\
-14 &      13.875760 &      14 & -0.048540 \\
-15 &      13.882008 &      15 & -0.042292 \\
-16 &      13.887122 &      16 & -0.037178 \\
-17 &      13.891361 &      17 & -0.032939 \\
-18 &      13.894914 &      18 & -0.029386 \\
-19 &      13.897921 &      19 & -0.026379 \\
-20 &      13.900489 &      20 & -0.023811 \\
-21 &      13.902699 &      21 & -0.021601 \\
-22 &      13.904614 &      22 & -0.019686 \\
-23 &      13.906286 &      23 & -0.018014 \\
-24 &      13.907752 &      24 & -0.016548 \\
-25 &      13.909047 &      25 & -0.015253 \\
-26 &      13.910195 &      26 & -0.014105 \\
-27 &      13.911218 &      27 & -0.013082 \\
-28 &      13.912133 &      28 & -0.012167 \\
-29 &      13.912955 &      29 & -0.011345 \\
-30 &      13.913697 &      30 & -0.010603 \\
-31 &      13.914367 &      31 & -0.009933 \\
+ 5.843200 &       1 & 8.081100 \\
+11.635200 &       2 & 2.289100 \\
+12.884780 &       3 & 1.039520 \\
+13.335200 &       4 & 0.589100 \\
+13.545974 &       5 & 0.378326 \\
+13.661077 &       6 & 0.263223 \\
+13.730687 &       7 & 0.193613 \\
+13.775950 &       8 & 0.148350 \\
+13.807020 &       9 & 0.117280 \\
+13.829263 &      10 & 0.095037 \\
+13.845731 &      11 & 0.078569 \\
+13.858262 &      12 & 0.066038 \\
+13.868017 &      13 & 0.056283 \\
+13.875760 &      14 & 0.048540 \\
+13.882008 &      15 & 0.042292 \\
+13.887122 &     16 & 0.037178 \\
+13.891361 &      17 & 0.032939 \\
+13.894914 &      18 &0.029386 \\
+13.897921 &      19 & 0.026379 \\
+13.900489 &      20 & 0.023811 \\
+13.902699 &      21 & 0.021601 \\
+13.904614 &      22 & 0.019686 \\
+13.906286 &      23 & 0.018014 \\
+13.907752 &      24 & 0.016548 \\
+13.909047 &      25 & 0.015253 \\
+13.910195 &      26 & 0.014105 \\
+13.911218 &      27 & 0.013082 \\
+13.912133 &      28 & 0.012167 \\
+13.912955 &      29 & 0.011345 \\
+13.913697 &      30 & 0.010603 \\
+13.914367 &      31 & 0.009933 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 
-Tabela \eqref{tabela1.2} przedstawia dane zwrócone z działania metody prostokątów dla funkcji \eqref{Eq:trygonometric} na przedziale $[0,0.8]$.
-Początkowo wartość błędu obliczonej całki jest duża, z racji przyjętego kształtu funkcji oraz przyjętego przedziału całkowania. Obie wartości funkcji na krańcach przedziałów są dodatnie oraz leżą bardzo blisko osi odciętych, przez co prostokąt przybliżający funkcje nijak ma się do rzeczywistego kształtu funkcji. Wraz ze zwiększającą się ilością podprzedziałów dokładność przybliżenia znacząco rośnie, aż dla 16 podprzedziałów przyjmuję przyjmuję zakładaną dokładność.
+Tabela \ref{tabela1.2} przedstawia dane zwrócone z działania metody prostokątów dla funkcji \eqref{Eq:trygonometric} na przedziale $[0,0.8]$.
+Początkowo wartość błędu obliczonej całki jest duża, z racji przyjętego kształtu funkcji oraz przyjętego przedziału całkowania. Obie wartości funkcji na krańcach przedziałów są dodatnie oraz leżą bardzo blisko osi odciętych, przez co prostokąt przybliżający funkcje nijak ma się do rzeczywistego kształtu funkcji. Wraz ze zwiększającą się ilością podprzedziałów dokładność przybliżenia znacząco rośnie, aż dla 16 podprzedziałów przyjmuję zakładaną dokładność.
 
 
 \paragraph{Funkcja trygonometryczna}\mbox{} \\
@@ -636,34 +691,34 @@ Początkowo wartość błędu obliczonej całki jest duża, z racji przyjętego 
 \centering 
 \caption{Dane z iteracji w metodzie prostokątów dla funkcji trygonometrycznej}
 \label{tabela1.2}
-\begin{tabular}{lrrr}
+\begin{tabular}{lll}
 \toprule
-{} &  Wartość całki &  l.podp &      Błąd \\
+I &  n &      E \\
 \midrule
-1  &       1.978716 &       1 &  1.734009 \\
-2  &      -1.293375 &       2 & -1.538083 \\
-3  &       1.427055 &       3 &  1.182348 \\
-4  &       0.538234 &       4 &  0.293527 \\
-5  &       0.391699 &       5 &  0.146991 \\
-6  &       0.335697 &       6 &  0.090990 \\
-7  &       0.307385 &       7 &  0.062677 \\
-8  &       0.290809 &       8 &  0.046102 \\
-9  &       0.280172 &       9 &  0.035465 \\
-10  &       0.272899 &      10 &  0.028192 \\
-11 &       0.267689 &      11 &  0.022982 \\
-12 &       0.263820 &      12 &  0.019113 \\
-13 &       0.260863 &      13 &  0.016156 \\
-14 &       0.258550 &      14 &  0.013843 \\
-15 &       0.256705 &      15 &  0.011998 \\
-16 &       0.255209 &      16 &  0.010502 \\
-17 &       0.253978 &      17 &  0.009271 \\
+1.978716 &       1 &  1.734009 \\
+-1.293375 &       2 & 1.538083 \\
+1.427055 &       3 &  1.182348 \\
+0.538234 &       4 &  0.293527 \\
+0.391699 &       5 &  0.146991 \\
+0.335697 &       6 &  0.090990 \\
+0.307385 &       7 &  0.062677 \\
+0.290809 &       8 &  0.046102 \\
+0.280172 &       9 &  0.035465 \\
+0.272899 &      10 &  0.028192 \\
+0.267689 &      11 &  0.022982 \\
+0.263820 &      12 &  0.019113 \\
+0.260863 &      13 &  0.016156 \\
+0.258550 &      14 &  0.013843 \\
+0.256705 &      15 &  0.011998 \\
+0.255209 &      16 &  0.010502 \\
+0.253978 &      17 &  0.009271 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \subsubsection{Metoda trapezów}
 
-Funkcja implementująca metodę trapezów, przyjmuje dokładnie te same parametry co metoda prostokątów. Pierwszym parametrem jest funkcja podcałkowa, kolejnymi dwoma kolejno górny i dolny przedział całkowania, a ostatnim  ilość podprzedziałów, na które dzielimy przedział całkowania. Funkcja zwraca przybliżoną wartość całki.
+Funkcja implementująca metodę trapezów, przyjmuje dokładnie takie same parametry co metoda prostokątów. Pierwszym parametrem jest funkcja podcałkowa, kolejnymi dwoma kolejno górny i dolny przedział całkowania, a ostatnim  ilość podprzedziałów, na które dzielimy przedział całkowania. Funkcja zwraca przybliżoną wartość całki.
 
 \begin{lstlisting}[caption={Kod w języku python implementujący metodę trapezów}]
 def f_trapI(f, a, b, n):
@@ -679,7 +734,7 @@ def f_trapI(f, a, b, n):
 
 \paragraph{Funkcja wielomianowa}\mbox{} \\
 
-Tabela \eqref{tabela2.1} przedstawia wyniki uzyskane z działania metody trapezów na funkcji \eqref{Eq:polynomial}.\\
+Tabela \ref{tabela2.1} przedstawia wyniki uzyskane z działania metody trapezów na funkcji \eqref{Eq:polynomial}.\\
 Dla pojedyńczego podprzedziału błąd funkci jest bardzo duży i wynika, z tego, że wartość funkcji dla końcowych argumentów z przedziału gwałtownie rośnie, przez co prosta łącząca krańce przedziału całkowanai robi to z dużym nadmiarem. Po podzieleniu podprzedziału na 2, błąd maleje o 1 rząd wielkości, a po kolejnych 3 o kolejny rząd. Do otrzymania zadanej dokładności metoda trapezów potrzebuje 44 podprzedziałów.
 \begin{table}[ht]
 \centering 
@@ -687,19 +742,19 @@ Dla pojedyńczego podprzedziału błąd funkci jest bardzo duży i wynika, z teg
 \label{tabela2.1}
 \begin{tabular}{lrrr}
 \toprule
-{} &  Wartość całki &  l.podp &       Błąd \\
+{} & I  &  n &       E \\
 \midrule
-1  &      31.315200 &       1 &  17.390900 \\
-2  &      18.579200 &       2 &   4.654900 \\
-3  &      16.018410 &       3 &   2.094110 \\
-4  &      15.107200 &       4 &   1.182900 \\
-5  &      14.682819 &       5 &   0.758519 \\
-* &      * &      * &   * \\
-40 &      13.936159 &      40 &   0.011859 \\
-41 &      13.935586 &      41 &   0.011286 \\
-42 &      13.935054 &      42 &   0.010754 \\
-43 &      13.934558 &      43 &   0.010258 \\
-44 &      13.934095 &      44 &   0.009795 \\
+31.315200 &       1 &  17.390900 \\
+18.579200 &       2 &   4.654900 \\
+16.018410 &       3 &   2.094110 \\
+15.107200 &       4 &   1.182900 \\
+14.682819 &       5 &   0.758519 \\
+* &      * &   * \\
+13.936159 &      40 &   0.011859 \\
+13.935586 &      41 &   0.011286 \\
+13.935054 &      42 &   0.010754 \\
+13.934558 &      43 &   0.010258 \\
+13.934095 &      44 &   0.009795 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -707,7 +762,7 @@ Dla pojedyńczego podprzedziału błąd funkci jest bardzo duży i wynika, z teg
 
 \paragraph{Funkcja trygonometryczna}\mbox{} \\
 
-Tabela \eqref{tabela2.2} przedstawia dane uzyskane z metody trapezów na funkcji podcałkowej \eqref{Eq:trygonometric}. Największy błąd dla tej funkcji pojawia się, gdy ilość podprzedziałów wynosi 3, dzieje się tak dlatego, że wartości funkcji dla granic środkowego podprzedziału przymuja bardzo niskie wartości, przez co trapez przybliżający funkcję na tym przedziale pomija całkowice całą dodatnią cześć sinusiody.\\
+Tabela \ref{tabela2.2} przedstawia dane uzyskane z działania metody trapezów na funkcji podcałkowej \eqref{Eq:trygonometric}. Największy błąd dla tej funkcji pojawia się, gdy ilość podprzedziałów wynosi 3, dzieje się tak dlatego, że wartości funkcji dla granic środkowego podprzedziału przymuja bardzo niskie wartości, przez co trapez przybliżający funkcję na tym przedziale pomija całkowice całą dodatnią cześć sinusiody.\\
 Metoda trapezów przyjmuję wartość z zadaną dokładnością przy ilości podprzedziałów równej 23.
 
 
@@ -715,21 +770,21 @@ Metoda trapezów przyjmuję wartość z zadaną dokładnością przy ilości pod
 \centering 
 \caption{Dane z iteracji w metodzie trapezów dla funkcji trygonometrycznej}
 \label{tabela2.2}
-\begin{tabular}{lrrr}
+\begin{tabular}{rrr}
 \toprule
-{} &  Wartość całki &  l.podp &      Błąd \\
+I &  n &      E \\
 \midrule
-1  &      -0.287903 &       1 & -0.532611 \\
-2  &       0.845407 &       2 &  0.600699 \\
-3  &      -1.269118 &       3 & -1.513825 \\
-4  &      -0.223984 &       4 & -0.468692 \\
-5  &      -0.011437 &       5 & -0.256145 \\
-*  &      *&       * & * \\
-19 &       0.230073 &      19 & -0.014635 \\
-20 &       0.231515 &      20 & -0.013192 \\
-21 &       0.232754 &      21 & -0.011954 \\
-22 &       0.233825 &      22 & -0.010882 \\
-23 &       0.234758 &      23 & -0.009949 \\
+-0.287903 &       1 & 0.532611 \\
+0.845407 &       2 &  0.600699 \\
+-1.269118 &       3 & 1.513825 \\
+-0.223984 &       4 & 0.468692 \\
+-0.011437 &       5 & 0.256145 \\
+ *&       * & * \\
+0.230073 &      19 & 0.014635 \\
+0.231515 &      20 & 0.013192 \\
+0.232754 &      21 & 0.011954 \\
+0.233825 &      22 & 0.010882 \\
+0.234758 &      23 & 0.009949 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -737,9 +792,9 @@ Metoda trapezów przyjmuję wartość z zadaną dokładnością przy ilości pod
 
 \subsubsection{Metoda Simpsona}
 
-Funkcja implementująca metodę Simpsona, tak jak poprzednie metody Newtona-Cotesa przyjmuje 4 parametry. Pierwszym jest całkowana funkcja, frugim dolny przedział całkowania, trzecim górny przedział całkowania, a ostatnim jest ilośc podprzedziałów, na które dzielimy przedział całkowania.
+Funkcja implementująca metodę Simpsona, tak jak poprzednie metody Newtona-Cotesa przyjmuje 4 parametry. Pierwszym jest całkowana funkcja, drugim dolny przedział całkowania, trzecim górny przedział całkowania, a ostatnim jest ilośc podprzedziałów, na które dzielimy przedział całkowania.
 
-\begin{lstlisting}[caption={Kod w języku python implementujący metodę prostokątów}]
+\begin{lstlisting}[caption={Kod w języku python implementujący metodę Simpsona}]
 def f_simp2I(f,a,b,n):
     """
      	  :param fun: funkcja
@@ -753,41 +808,41 @@ def f_simp2I(f,a,b,n):
 
 \paragraph{Funkcja wielomianowa}\mbox{} \\
 
-Tabela \eqref{tabela3.1} przedstawia wyniki uzyskanie z działania metody Simpsona dla funkcii podcałkowej \eqref{Eq:polynomial}. Metoda Simpsona potrzebowała 6 podprzedziałów by osiągnąć zadaną dokładność.
+Tabela \ref{tabela3.1} przedstawia wyniki uzyskane z działania metody Simpsona dla funkcii podcałkowej \eqref{Eq:polynomial}. Metoda Simpsona potrzebowała 6 podprzedziałów by osiągnąć zadaną dokładność.
 
 \begin{table}[H]
 \centering 
 \caption{Dane z iteracji w metodzie Simpsona dla funkci wielomianowej}
 \label{tabela3.1}
-\begin{tabular}{lrrr}
+\begin{tabular}{rrr}
 \toprule
-{} &  Wartość całki &  l.podp &      Błąd \\
+Ii &  n &      E \\
 \midrule
-1
-2 &      14.333867 &       2 &  0.409567 \\
-3 &      13.929323 &       6 &  0.005023 \\
+14.333867 &       2 &  0.409567 \\
+13.949867 &       4 & 0.025567 \\
+13.929323 &       6 &  0.005023 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \paragraph{Funkcja trygonometryczna}\mbox{} \\
 
-Tabela \eqref{tabela3.2} przedstawia wyniki uzyskanie z działania metody Simpsona dla funkcii podcałkowej \eqref{Eq:trygonometric}. Metoda Simpsona potrzebowała 12 podprzedziałów by osiągnąć zadaną dokładność.
+Tabela \ref{tabela3.2} przedstawia wyniki uzyskane z działania metody Simpsona dla funkcii podcałkowej \eqref{Eq:trygonometric}. Metoda Simpsona potrzebowała 12 podprzedziałów by osiągnąć zadaną dokładność.
 
 \begin{table}[H]
 \centering
 \caption{Dane z iteracji w metodzie Simpsona dla funkci trygonometrycznej}
 \label{tabela3.2}
-\begin{tabular}{lrrr}
+\begin{tabular}{lll}
 \toprule
-{} &  Wartość całki &  l.podp &      Błąd \\
+I &  n &      E \\
 \midrule
-1 &       1.223177 &       2 &  0.978469 \\
-2 &      -0.580448 &       4 & -0.825156 \\
-3 &       0.528331 &       6 &  0.283623 \\
-4 &       0.284161 &       8 &  0.039454 \\
-5 &       0.257320 &      10 &  0.012613 \\
-6 &       0.250121 &      12 &  0.005413 \\
+1.223177 &       2 &  0.978469 \\
+-0.580448 &       4 & 0.825156 \\
+0.528331 &       6 &  0.283623 \\
+0.284161 &       8 &  0.039454 \\
+0.257320 &      10 &  0.012613 \\
+0.250121 &      12 &  0.005413 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -796,7 +851,7 @@ Tabela \eqref{tabela3.2} przedstawia wyniki uzyskanie z działania metody Simpso
 \subsubsection{Metoda Gaussa Legendre'a}
 Funkcja implementująca metodę Gaussa Legendre'a tak jak wszystkie funkcję bazujące na przybliżaniu krzywej wielomianami, przyjmuje 4 parametry. Pierwszym z nich jest całkowana funkcja, drugim dolny, a trzecim górny przedział całkowania, jako 4 parametr funkcja przyjmuję ilosć podprzedziałów na którę podzieli przedział całkowania. Wartością zwracaną przez funkcję jest przybliżenie całki.
 
-\begin{lstlisting}[caption={Kod w języku python implementujący metodę trapezów}]
+\begin{lstlisting}[caption={Kod w języku python implementujący metodę Gaussa Legendre'a}]
 def f_gauss_legrande(f,a,b,n):
     """
           :param fun: funkcja
@@ -810,42 +865,42 @@ def f_gauss_legrande(f,a,b,n):
 
 \paragraph{Funkcja wielomianowa}\mbox{} \\
 
-Tabela \eqref{tabela4.1} przedstawia wyniki uzyskanie z działania metody Gaussa Legendre'a dla funkcii podcałkowej \eqref{Eq:polynomial}. Funkcja , dla której liczona jest całka jest wielomianem stopnia 5, a metoda Gaussa Legendre'a daje wynik dokładny dla wielomianów stopnia $2n-1$, dlatego do uzyskania zadanej dokładności metoda potrzebowała 3 węzłów interpolacyjnych. Uzyskany błąd wynika z zaokrągleń.
+Tabela \ref{tabela4.1} przedstawia wyniki uzyskane z działania metody Gaussa Legendre'a dla funkcii podcałkowej \eqref{Eq:polynomial}. Funkcja , dla której liczona jest całka jest wielomianem stopnia 5, a metoda Gaussa Legendre'a daje wynik dokładny dla wielomianów stopnia $2n-1$, dlatego do uzyskania zadanej dokładności metoda potrzebowała 3 węzłów interpolacyjnych. Uzyskany błąd wynika z błedu zaokrągleń.
 
 \begin{table}[H]
 \centering 
 \caption{Dane z iteracji w metodzie Gauss'a Legendre'a dla funkcji wielomianowej}
 \label{tabela4.1}
-\begin{tabular}{lrrr}
+\begin{tabular}{lll}
 \toprule
-{} &  Wartość całki &  l.podp &      Błąd \\
+I &  n &      E \\
 \midrule
-1 &       5.843200 &       1 & -8.081100 \\
-2 &      13.651200 &       2 & -0.273100 \\
-3 &      13.924267 &       3 & -0.000033 \\
+5.843200 &       1 & 8.081100 \\
+13.651200 &       2 & 0.273100 \\
+13.924267 &       3 & 0.000033 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \paragraph{Funkcja trygonometryczna}\mbox{} \\
 
-Tabela \eqref{tabela4.2} przedstawia wyniki uzyskanie z działania metody Gaussa Legendre'a dla funkcii podcałkowej \eqref{Eq:trygonometric}. Całkowana funkcja nie jest wielomianem, więc uzyskanie dokładnej wartości przy użyciu metody Gaussa jest niemożliwe, lecz jej kształ sprawia, że daje się ona łatwo przybliżyć, przy użyciu wielomianów, co skutkuje, że do uzyskania zakładanej dokładności kwadratura Gaussa potrzebowała jedynie 7 węzłów interpolacyjnych.
+Tabela \ref{tabela4.2} przedstawia wyniki uzyskane z działania metody Gaussa Legendre'a dla funkcii podcałkowej \eqref{Eq:trygonometric}. Całkowana funkcja nie jest wielomianem, więc uzyskanie dokładnej wartości przy użyciu metody Gaussa jest niemożliwe, lecz jej kształ sprawia, że daje się ona łatwo przybliżyć, przy użyciu wielomianów, co skutkuje, że do uzyskania zakładanej dokładności kwadratura Gaussa potrzebowała jedynie 7 węzłów interpolacyjnych.
 
 \begin{table}[H]
 \centering
 \caption{Dane z iteracji w metodzie Gauss'a Legendre'a dla funkcji trygonometrycznej}
 \label{tabela4.2}
-\begin{tabular}{lrrr}
+\begin{tabular}{lll}
 \toprule
-{} &  Wartość całki &  l.podp &      Błąd \\
+I &  n &      E \\
 \midrule
-1 &       1.978716 &       1 &  1.734009 \\
-2 &      -0.184912 &       2 & -0.429619 \\
-3 &       1.974615 &       3 &  1.729907 \\
-4 &      -0.611561 &       4 & -0.856269 \\
-5 &       0.456455 &       5 &  0.211748 \\
-6 &       0.212634 &       6 & -0.032073 \\
-7 &       0.248022 &       7 &  0.003315 \\
+1.978716 &       1 &  1.734009 \\
+-0.184912 &       2 & 0.429619 \\
+1.974615 &       3 &  1.729907 \\
+-0.611561 &       4 & 0.856269 \\
+0.456455 &       5 &  0.211748 \\
+0.212634 &       6 & 0.032073 \\
+0.248022 &       7 &  0.003315 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -853,7 +908,7 @@ Tabela \eqref{tabela4.2} przedstawia wyniki uzyskanie z działania metody Gaussa
 \subsubsection{Metoda adaptacyjna trapezów}
 
 Metoda adaptacyjna trapezów przyjmuje 4 parametry. Tak jak w poprzednich funkcjach trzema pierwszymi są: całkowana funkcja, dolny przedział całkowania, górny przedział całkowania. Jako 4 parametry funkcja przyjmuję tolerancje, na podstawie której będzie decydowała, czy dokonywać dalszych podziałów przedziału całkowania, czy nie. Funkcja zwaraca przybliżoną wartość całki.
-\begin{lstlisting}[caption={Kod w języku python implementujący metodę trapezów}]
+\begin{lstlisting}[caption={Kod w języku python implementujący adaptacyjną metodę trapezów}]
 def f_adapt(f,a,b,tol):
     """
     		:param fun: funkcja
@@ -867,7 +922,7 @@ def f_adapt(f,a,b,tol):
 
 \paragraph{Funkcja wielomianowa}\mbox{} \\
 
-Tabela \eqref{tabela5.1} przedstawia wyniki uzyskanie z działania metody Adaptacyjnej Trapezów na funkcii podcałkowej \eqref{Eq:polynomial}. Pomimo, że bład nie jest mniejszy niż zakładana tolerancja, to obie te wartości ulegają zmniejszeniu wraz ze zmniejszeniem parametru tol. Najdokładniejsze przybliżenie metoda osiąga dla 1000 podprzedziałów, kolejne iteracje dają wynik nieznacznie gorszy. Fakt ten wynikać ze zbyt dużej dokładności, ponieważ analityczny wynik całkowania badanego wielomianu, wynosi 13.9243, a próbujemy uzyskać dokładność rzędu 0.00000001.
+Tabela \ref{tabela5.1} przedstawia wyniki uzyskanie z działania metody adaptacyjnej trapezów na funkcii podcałkowej \eqref{Eq:polynomial}. Pomimo, że bład nie jest mniejszy niż zakładana tolerancja, to obie te wartości ulegają zmniejszeniu wraz ze zmniejszeniem parametru tol. Najdokładniejsze przybliżenie metoda osiąga dla 1000 podprzedziałów, kolejne iteracje dają wynik nieznacznie gorszy. Fakt ten wynikać ze zbyt dużej dokładności, ponieważ analityczny wynik całkowania badanego wielomianu, wynosi 13.9243, a próbowano uzyskać dokładność rzędu 0.00000001.
 
 \begin{table}[H]
 \centering 
@@ -875,18 +930,18 @@ Tabela \eqref{tabela5.1} przedstawia wyniki uzyskanie z działania metody Adapta
 \label{tabela5.1}
 \begin{tabular}{lrrrr}
 \toprule
-{} &  Wartość całki &  l.podp &  Tol &      Błąd \\
+I &  n&  Tol &      E \\
 \midrule
-1 &       14.08788 &  8  &   0.1 & 0.16358\\
-2 &       13.950712 &  22 &   0.01 & 0.026412\\
-3 &       13.929132 &  48  &  0.001 & 0.004832 \\
-4 &       13.925456 &  98  &  0.0001  & 0.001156 \\
-5 &       13.925456 &  208  &  0.00001  &  0.000265 \\
-6 &       13.924337 &  442  &  0.000001  & 3.7E-5 \\
-7 &       13.924281 &  1000  &  0.0000001  & 1.9E-5 \\
-8 &       13.924269 &  2208  &  0.00000001  & 3.1E-5 \\
-9 &       13.924267 &  4812  &  0.000000001  & 3.3E-5 \\
-10 &       13.924267 &  10346  &  0.0000000001  & 3.3E-5 \\
+14.08788 &  8  &   0.1 & 0.16358\\
+13.950712 &  22 &   0.01 & 0.026412\\
+13.929132 &  48  &  0.001 & 0.004832 \\
+13.925456 &  98  &  0.0001  & 0.001156 \\
+513.925456 &  208  &  0.00001  &  0.000265 \\
+13.924337 &  442  &  0.000001  & 3.7E-5 \\
+13.924281 &  1000  &  0.0000001  & 1.9E-5 \\
+13.924269 &  2208  &  0.00000001  & 3.1E-5 \\
+13.924267 &  4812  &  0.000000001  & 3.3E-5 \\
+13.924267 &  10346  &  0.0000000001  & 3.3E-5 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -894,27 +949,27 @@ Tabela \eqref{tabela5.1} przedstawia wyniki uzyskanie z działania metody Adapta
 \paragraph{Funkcja trygonometryczna}\mbox{} \\
 
 
-Tabela \eqref{tabela5.2} przedstawia wyniki uzyskanie z działania metody Adaptacyjnej Trapezów na funkcii podcałkowej \eqref{Eq:trygonometric}. W tabeli zauważyć można, że wraz ze wzrostem deklarowanej dokładności, błąd maleje. Nie zawsze udaje się uzyskać błąd taki jak przekazana jako argument tolerancja, ale trzeba pamiętać, że to tylko szacunek, a nie gwarancja. Po podziale funkcji na 5571 podprzedziałów udaje się uzyskać wynik dokłady do 6 miejsca po przecinku.
+Tabela \ref{tabela5.2} przedstawia wyniki uzyskanie z działania metody adaptacyjnej trapezów na funkcii podcałkowej \eqref{Eq:trygonometric}. W tabeli zauważyć można, że wraz ze wzrostem deklarowanej dokładności, błąd maleje. Nie zawsze udaje się uzyskać błąd taki jak przekazana jako argument tolerancja, ale trzeba pamiętać, że to tylko szacunek, a nie gwarancja. Po podziale funkcji na 5571 podprzedziałów udaje się uzyskać wynik dokłady do 6 miejsca po przecinku.
 
 
 \begin{table}[H]
 \centering 
 \caption{Dane z iteracji w metodzie Adaptacyjnej Trapezów dla funkcji trygonometrycznej}
 \label{tabela5.2}
-\begin{tabular}{lrrrr}
+\begin{tabular}{llll}
 \toprule
-{} &  Wartość całki &  l.podprzedziałów &  Tol &      Błąd \\
+I&  n &  Tol &      E \\
 \midrule
-1 &       0.275097 &  12  &   0.1 & 0.03039 \\
-2 &       0.226516 &  26 &   0.01 & 0.018191 \\
-3 &       0.243565 &  54  &  0.001 & 0.001143 \\
-4 &       0.244287 &  116  &  0.0001  & 0.00042 \\
-5 &       0.244644 &  234  &  0.00001  & 6.4E-5 \\
-6 &       0.244686 &  476  &  0.000001  & 2.1E-5 \\
-7 &       0.244702 &  964  &  0.0000001  & 5.0E-6 \\
-8 &       0.244706 &  1952  &  0.00000001  & 2.0E-7 \\
-9 &       0.244707 & 5571  &  0.000000001  & 2.0E-7 \\
-10 &       0.244707 & 12406  & 0.0000000001  & 3.3E-8 \\
+0.275097 &  12  &   0.1 & 0.03039 \\
+0.226516 &  26 &   0.01 & 0.018191 \\
+0.243565 &  54  &  0.001 & 0.001143 \\
+0.244287 &  116  &  0.0001  & 0.00042 \\
+0.244644 &  234  &  0.00001  & 6.4E-5 \\
+0.244686 &  476  &  0.000001  & 2.1E-5 \\
+0.244702 &  964  &  0.0000001  & 5.0E-6 \\
+0.244706 &  1952  &  0.00000001  & 2.0E-7 \\
+0.244707 & 5571  &  0.000000001  & 2.0E-7 \\
+0.244707 & 12406  & 0.0000000001  & 3.3E-8 \\
 
 \bottomrule
 \end{tabular}
@@ -928,9 +983,9 @@ Wartością zwracaną przez funkcję jest przybliżenie całki.
 \begin{lstlisting}[caption={Kod w języku python implementujący metodę Crude Monte Carlo}]
 def f_crudeMonteC(f,a,b,n):
     """
-    		:param fun: funkcja
-            :param ax: dolny przedzial calkowania
-            :param bx: gorny przedzial calkowania
+    		:param f: funkcja
+            :param a: dolny przedzial calkowania
+            :param b: gorny przedzial calkowania
             :param n: ilosc losowych punktow
             :return: przyblizona wartosc calki
     """
@@ -939,8 +994,8 @@ def f_crudeMonteC(f,a,b,n):
 
 \paragraph{Funkcja wielomianowa}\mbox{} \\
 
-W tabeli \eqref{tabela6.1} przedstawiono wyniki uzyskane z działania metody Crude Monte Carlo dla funkcii podcałkowej \eqref{Eq:polynomial}.
-Otrzymany błąd dla jednego podprzedziału może wydawać, się zaskakująco mały, lecz trzeba wziąć pod uwagę, że jest on średnim błędem dla 100 iteracji. Dla jednego podprzedziału wartości całki może się wahać od 1.2 do 61.5103. Wraz ze zwiększaniem ilości punktów, zakres otrzymywanych wyników ulega zmniejszeniu. w tabeli można również zauważyć, że wartości otrzymane dla 100 jak i 1000 punktów, są bardzo podobne i wynika to z losowości ich rozmieszczenia.
+W tabeli \ref{tabela6.1} przedstawiono wyniki uzyskane z działania metody Crude Monte Carlo dla funkcii podcałkowej \eqref{Eq:polynomial}.
+Otrzymany błąd dla jednego podprzedziału może wydawać, się zaskakująco mały, lecz badanie dla każdej ilości podprzedziałów było wyknoywane 100 razy. Dla jednego podprzedziału wartości całki może się wahać od 1.2 do 61.5103. Wraz ze zwiększaniem ilości punktów, zakres otrzymywanych wyników ulega zmniejszeniu. W tabeli można również zauważyć, że wartości otrzymane dla 100 jak i 1000 punktów, są bardzo podobne i wynika to z losowości ich rozmieszczenia.
 Przy 100000 losowych punktów średni otrzymany błąd przybliżenia wynosi 0.01%.
 
 
@@ -948,16 +1003,16 @@ Przy 100000 losowych punktów średni otrzymany błąd przybliżenia wynosi 0.01
 \centering 
 \caption{Dane z iteracji w metodzie Crude Monte Carlo dla funkcji wielomianowej}
 \label{tabela6.1}
-\begin{tabular}{lrrrrr}
+\begin{tabular}{lllll}
 \toprule
-{Row} &  Points &  minValue &  maxValue &       AVG &      Błąd \\
+n &  minValue &  maxValue &       AVG &      E \\
 \midrule
-1  &     1 & 1.416807038 &   60.99560428 & 11.987235 & 13.91\% \\
-2  &     10 & 2.70581996 &   26.80458791 & 13.662372 & 1.88\% \\
-3  &     100 & 10.89037611 &  19.49690441 & 13.98955& 0.47\% \\
-4  &     1000 & 12.37476196 &   14.94271099 & 13.941598 & 0.12\% \\
-5  &     10000 & 13.61746918 &  14.30824118 & 13.906282 & 0.13\% \\
-6  &     100000 & 13.76707602 &  14.03293431 & 13.922587 & 0.01\% \\
+1 & 1.416807038 &   60.99560428 & 11.987235 & 13.91\% \\
+10 & 2.70581996 &   26.80458791 & 13.662372 & 1.88\% \\
+100 & 10.89037611 &  19.49690441 & 13.98955& 0.47\% \\
+1000 & 12.37476196 &   14.94271099 & 13.941598 & 0.12\% \\
+510000 & 13.61746918 &  14.30824118 & 13.906282 & 0.13\% \\
+100000 & 13.76707602 &  14.03293431 & 13.922587 & 0.01\% \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -965,42 +1020,41 @@ Przy 100000 losowych punktów średni otrzymany błąd przybliżenia wynosi 0.01
 
 \paragraph{Funkcja trygonometryczna}\mbox{} \\
 
-Tabela \eqref{tabela6.2} przedstawia wyniki uzyskanie z działania metody Crude Monte Carlo dla funkcii podcałkowej \eqref{Eq:trygonometric}.
+Tabela \ref{tabela6.2} przedstawia wyniki uzyskane z działania metody Crude Monte Carlo dla funkcii podcałkowej \eqref{Eq:trygonometric}.
 Na podstawie pierwszych 3 wierszy tabeli widać, że otrzymywany błąd wraz z dziecięsiokrotnym wzrostem ilości punktów maleje około 4-krotnie.
-Dalsze 10-krotne zwiększenie ilości użytych punktów  daje około 7-krotne zmniejszenie błędu. Przy 10000 punktów błąd maleje o połowę, a użycie 100000 daje błąd przybliżenia całki na poziomie 0.12%.
+Dalsze 10-krotne zwiększenie ilości użytych punktów daje około 7-krotne zmniejszenie błędu. Przy 10000 punktów błąd maleje o połowę, a użycie 100000 punktów daje błąd przybliżenia całki na poziomie 0.12%.
 
 
 \begin{table}[H]
 \centering 
 \caption{Dane z iteracji w metodzie Crude Monte Carlo dla funkcji trygonometrycznej}
 \label{tabela6.2}
-\begin{tabular}{lrrrrr}
+\begin{tabular}{lllll}
 \toprule
-{Row} &  Points &  minValue &  maxValue &       AVG &      Błąd \\
+n &  minValue &  maxValue &       AVG &      E \\
 \midrule
-1  &     1 & -1.999712843 &   1.999075162 & 0.438109 & 79.03\% \\
-2  &     10 & -0.6383128719 &  1.133784472 & 0.190505 & 22.15\% \\
-3  &     100 & -0.1079735697 &  0.5645576157 & 0.261066 & 6.68\% \\
-4  &     1000 & 0.1529912591 &   0.3583314798 & 0.246922 & 0.9\% \\
-5  &     10000 & 0.2148820935 &  0.2831131619 & 0.243623 & 0.44\% \\
-6  &     100000 & 0.2349722501 &  0.2594303218 & 0.244408 & 0.12\% \\
+1 & -1.999712843 &   1.999075162 & 0.438109 & 79.03\% \\
+10 & -0.6383128719 &  1.133784472 & 0.190505 & 22.15\% \\
+100 & -0.1079735697 &  0.5645576157 & 0.261066 & 6.68\% \\
+1000 & 0.1529912591 &   0.3583314798 & 0.246922 & 0.9\% \\
+10000 & 0.2148820935 &  0.2831131619 & 0.243623 & 0.44\% \\
+100000 & 0.2349722501 &  0.2594303218 & 0.244408 & 0.12\% \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 
 \subsubsection{Metoda Monte Carlo}
-Listing 11 prezentuje nagłówek metody Monte Carlo. Metoda ta przyjmuje 6 parametrów. Pierwszym jest całkowana funkcja, drugim dolny przedział całkowania, trzecim górny przedział całkowania, czwartym ilośc punktów, którymi będziemy próbkować funkcję. Ostatnimi argumentami funkcji są minimalna oraz maksymalna wartość przyjmowana przez funkcję na przedziale $[a,b]$. Funkcja zwraca przybliżoną wartość całki.
+Listing 11 prezentuje nagłówek metody Monte Carlo. Metoda ta przyjmuje 5 parametrów. Pierwszym jest całkowana funkcja, drugim dolny przedział całkowania, trzecim górny przedział całkowania, czwartym ilośc punktów, którymi będziemy próbkować funkcję. Ostatni jest argument opcjonalny i może nim być minimalna oraz maksymalna wartość przyjmowana przez funkcję na przedziale $[a,b]$. Funkcja zwraca przybliżoną wartość całki.
 
 \begin{lstlisting}[caption={Kod w języku python implementujący metodę Monte Carlo}]
-    def f_MonteC(f,a,b,n,min,max):
+    def f_MonteC(f,a,b,n,*args):
     """
            :param fun: funkcja
            :param a: dolny przedzial calkowania
            :param b: gorny przedzial calkowania
            :param n: ilosc losowych punktow
-           :param min: minimalna wartosc funkcji
-           :param max: maksymalna wartosc funkcji
+           :param *args: opcjonalny parametr, minimalna oraz maksymalna wartosc funkcji
            :return: przyblizona wartosc calki
            """
 \end{lstlisting}
@@ -1008,42 +1062,42 @@ Listing 11 prezentuje nagłówek metody Monte Carlo. Metoda ta przyjmuje 6 param
 
 \paragraph{Funkcja wielomianowa}\mbox{} \\
 
-Tabela \eqref{tabela7.1} przedstawia wyniki uzyskanie z działania metody Monte Carlo dla funkcii podcałkowej \eqref{Eq:polynomial}.
+Tabela \ref{tabela7.1} przedstawia wyniki uzyskane z działania metody Monte Carlo dla funkcii podcałkowej \eqref{Eq:polynomial}. Z uwagi na specyfikę tej metody wynik dla 10 jak i 100 punktów jest praktycznie identyczny. Przy 1000 losowych punktów błąd metody spadł 3 krotnie. Nastepne zwiększenie punktów z 1000 do 10000 poskutkowało zmniejszeniem błędu o 2 rzędy wielkości. Ostatni test przyniósł wynik bardzo podobny pomimo, że liczba punktów została zwiększona 10- krotnie.
 
 \begin{table}[H]
 \centering 
 \caption{Dane z iteracji w metodzie Monte Carlo dla funkcji wielomianowej}
 \label{tabela7.1}
-\begin{tabular}{lrrrrr}
+\begin{tabular}{lllll}
 \toprule
-{Row} &  Points &  minValue &  maxValue &       AVG &      Błąd \\
+n &  minValue &  maxValue &       AVG &      E \\
 \midrule
-1  &     10 & 0.0 &   43.05728 & 14.270413 & 0.346113 \\
-2  &     100 & 7.996352 &  22.143744 & 14.288866 & 0.364566 \\
-3  &     1000 & 12.056038 &   16.607808 & 13.814621 & 0.109679 \\
-4  &     10000 & 13.24934 &  14.7871 & 13.926631 & 0.002331 \\
-5  &     100000 & 13.671917 &  14.164615 & 13.922184& 0.002116 \\
+10 & 0.0 &   43.05728 & 14.270413 & 0.346113 \\
+100 & 7.996352 &  22.143744 & 14.288866 & 0.364566 \\
+1000 & 12.056038 &   16.607808 & 13.814621 & 0.109679 \\
+10000 & 13.24934 &  14.7871 & 13.926631 & 0.002331 \\
+100000 & 13.671917 &  14.164615 & 13.922184& 0.002116 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \paragraph{Funkcja trygonometryczna}\mbox{} \\
 
-Tabela \eqref{tabela7.2} przedstawia wyniki uzyskanie z działania metody Monte Carlo dla funkcii podcałkowej \eqref{Eq:trygonometric}.
+Tabela \eqref{tabela7.2} przedstawia wyniki uzyskanie z działania metody Monte Carlo dla funkcii podcałkowej \eqref{Eq:trygonometric}.  Jak widać w tabeli losowość tej metody sprawiła, że dla 10 punktów błąd aproksymacji wyniósł 0.003293. Następny tak dobry wynik udało się osiągnąć dopiero dla 10000 punktów.
 
 \begin{table}[H]
 \centering 
 \caption{Dane z iteracji w metodzie Monte Carlo dla funkcji trygonometrycznej}
 \label{tabela7.2}
-\begin{tabular}{lrrrrr}
+\begin{tabular}{lllll}
 \toprule
-{Row} &  Points &  minValue &  maxValue &       AVG &      Błąd \\
+n &  minValue &  maxValue &       AVG &      E \\
 \midrule
-1  &     10 & -2.0 &   1.6 & 0.248 & 0.003293 \\
-2  &     100 & -0.24 &  0.76 & 0.2556 & 0.010893  \\
-3  &     1000 & 0.08 &   0.384 & 0.232& 0.012707 \\
-4  &     10000 & 0.1708 &  0.3076 & 0.248704 & 0.003997 \\
-5  &     100000 & 0.22332 & 0.2624 & 0.244092 & 0.000615  \\
+10 & -2.0 &   1.6 & 0.248 & 0.003293 \\
+100 & -0.24 &  0.76 & 0.2556 & 0.010893  \\
+1000 & 0.08 &   0.384 & 0.232& 0.012707 \\
+10000 & 0.1708 &  0.3076 & 0.248704 & 0.003997 \\
+100000 & 0.22332 & 0.2624 & 0.244092 & 0.000615  \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1052,23 +1106,23 @@ Tabela \eqref{tabela7.2} przedstawia wyniki uzyskanie z działania metody Monte 
 
 \subsection{Porównanie metod}
 
-\paragraph{Porównanie metod bazujących na interpolacji}\mbox{}
+\paragraph{Porównanie metod bazujących na interpolacji wielomianowej}\mbox{}
 
-Tabela \eqref{tabela9.1} przedstawia porównanie metod całkowania opartych o interpolację wielomianową dla 2 podprzedziałów.
-Jak widzimy metodą dającą najgorszy wynik jest Metoda Trapezów, zwraca ona wynik 2-krotnie gorszy niż Metoda Prostokątów. 
+Tabela \ref{tabela9.1} przedstawia porównanie metod całkowania opartych o interpolację wielomianową dla 2 podprzedziałów.
+Jak widzimy metodą dającą najgorszy wynik jest metoda trapezów, zwraca ona wynik 2-krotnie gorszy niż metoda prostokątów. 
 Metoda Simpsona daje o 1 rząd wielkości błąd mniejszy niż metody trapezów i prostokątów. 
 Metoda Gaussa Legendrea uzyskała błąd prawie o połowę niższy niż metoda Simpsona.
 
 \begin{table}[h]
 \centering 
-\caption{Tabela porównująca metody całkowania oparte na interpolacji wielomianem dla 2 podprzedziałów }
+\caption{Dane z iteracji metod całkowania opartych na interpolacji wielomianem dla 2 podprzedziałów }
 \label{tabela9.1}
-\begin{tabular}{lrrr}
+\begin{tabular}{llll}
 \toprule
-{l.podp} & Metoda &  l.podp &  Błąd \\
+{n} & Metoda &  I &  E \\
 \midrule
-2  &     Prostokątów & 11.6352 &   2.2891  \\
-2  &     Trapezów & 18.579200 &  4.654900  \\
+2  &     prostokątów & 11.6352 &   2.2891  \\
+2  &     trapezów & 18.579200 &  4.654900  \\
 2  &     Simpsona & 14.333867 &   0.409567  \\
 2  &     Gaussa Legendre & 13.651200 &  0.273100  \\
 \bottomrule
@@ -1076,8 +1130,8 @@ Metoda Gaussa Legendrea uzyskała błąd prawie o połowę niższy niż metoda S
 \end{table}
 
 
-W tabeli \eqref{tabela9.2} umieszczone zostały wyniki z działania metod dla 4 podprzedziałów.
-Jak widać w tabeli stosunek różnicy pomiędzy metodą Prostokątów i Trapezów pozostał podobny.
+W tabeli \ref{tabela9.2} umieszczone zostały wyniki z działania metod dla 4 podprzedziałów.
+Jak widać w tabeli stosunek różnicy pomiędzy metodą prostokątów i trapezów pozostał podobny.
 Błąd w metodzie Prostokątów i Trapezów wynosi $\frac{1}{2^2}$ w stosunku do błędu dla 2 podprzedziałów.
 W metodzie Simpsona wraz z podwojeniem podprzedziałów błąd zmniejsza się o $\frac{1}{2^4}$.
 Metoda Gaussa Legendrea daje wynik dokładny dla wielomianów stopnia $2n-1$, w związku z czym już dla 3 węzłów zwróciła ona wynik dokładny.
@@ -1085,14 +1139,14 @@ Metoda Gaussa Legendrea daje wynik dokładny dla wielomianów stopnia $2n-1$, w 
 
 \begin{table}[h]
 \centering 
-\caption{Tabela porównująca metody całkowania oparte na interpolacji wielomianem dla 4 podprzedziałów }\mbox{}
+\caption{Dane z metod całkowania opartych na interpolacji wielomianem dla 4 podprzedziałów }\mbox{}
 \label{tabela9.2}
-\begin{tabular}{lrrr}
+\begin{tabular}{llll}
 \toprule
-{l.podp} & Metoda &  l.podp &  Błąd \\
+{n} & Metoda &  I &  E \\
 \midrule
-4  &     Prostokątów & 13.33520 &   0.58910  \\
-4  &     Trapezów & 15.107200 &  1.182900  \\
+4  &     prostokątów & 13.33520 &   0.58910  \\
+4  &     trapezów & 15.107200 &  1.182900  \\
 4  &     Simpsona & 13.949867 &   0.025567  \\
 4  &     Gaussa Legendre & 13.924267 &  0.000033  \\
 \bottomrule
@@ -1102,16 +1156,16 @@ Metoda Gaussa Legendrea daje wynik dokładny dla wielomianów stopnia $2n-1$, w 
 
 \paragraph{Porównanie metody Simpsona oraz Gaussa Legendra}\mbox{}
 
-Jak widać w tabeli \eqref{tabela9.3} początkowoa metoda Simpsona wykazuje dokładniejsze przybliżenie całki niż metoda Gaussa Legendre'a, przy 6 podprzedziałach zwraza błąd 10-krotnie mniejszy. Dopiero gdy liczba podprzedziałów wynosi 8 metoda Gaussa okazuje się być lepsza i zwracać błąd mniejszy o 2 rzędy wielkości. 
+Jak widać w tabeli \ref{tabela9.3} początkowoa metoda Simpsona wykazuje dokładniejsze przybliżenie całki niż metoda Gaussa Legendre'a, przy 6 podprzedziałach zwraza błąd 10-krotnie mniejszy. Dopiero gdy liczba podprzedziałów wynosi 8 metoda Gaussa okazuje się być lepsza i zwracać błąd mniejszy o 2 rzędy wielkości. 
 Przy 10 podprzedziałach kwadratura Gaussa zwraca wynik dokładny jeśli zaokrąglimy analitycznie obliczoną całkę do 6 miejsca po przecinkuo.
 
 \begin{table}[h]
 \centering 
-\caption{Tabela porównująca Gaussa i Simpsona }
+\caption{Dane z iteracji metod Gaussa i Simpsona }
 \label{tabela9.3}
 \begin{tabular}{lrrr}
 \toprule
-{l.podp} & Metoda &  I &  Błąd \\
+{n} & Metoda &  I &  E \\
 \midrule
 2  &     Simpsona & 1.223177 &   9.784691e-01 \\
 4  &     Simpsona & -0.580448  &   8.251555e-01  \\
@@ -1130,67 +1184,65 @@ Przy 10 podprzedziałach kwadratura Gaussa zwraca wynik dokładny jeśli zaokrą
 \end{table}
 
 
+\paragraph{Porównanie metody trapezów i adaptacyjnej metody trapezów}\mbox{}
 
-
-\paragraph{Porównanie metody Trapezów i Adaptacyjnej metody trapezów}\mbox{}
-
-Tabela \eqref{tabela9.4} przedstawia porównanie Metody Trapezów i Adaptacyjnej Metody Trapezów. Porównanie zostało przeprowadzone na funkcji \eqref{Eq:polynomial}. Funkcja ta wraz z posuwaniem się na prawo po osi odciętych przyjmuje coraz większą wartość, przez co żeby mogła osiągnąć zadeklarowaną dokładność, dzieli prawą stronę równania na mniejsze podprzedziały, gdzie zwykła metoda trapezów dzieli funkcję na podprzedziały równo rozmieszczone wzdłuż całego przedziału całkowania. Stąd wynik uzyskany przez metodę adaptacyjną jest 2-krotnie dokładniejszy dla ostatnich dwóch iteracji pokazanych w tabeli.
+Tabela \ref{tabela9.4} przedstawia porównanie metody trapezów i adaptacyjnej metody trapezów. Porównanie zostało przeprowadzone na funkcji \eqref{Eq:polynomial}. Funkcja ta wraz z posuwaniem się na prawo po osi odciętych przyjmuje coraz większą wartość, przez co żeby mogła osiągnąć zadeklarowaną dokładność, dzieli prawą stronę równania na mniejsze podprzedziały, gdzie zwykła metoda trapezów dzieli funkcję na podprzedziały równo rozmieszczone wzdłuż całego przedziału całkowania. Stąd wynik uzyskany przez metodę adaptacyjną jest 2-krotnie dokładniejszy dla ostatnich dwóch iteracji pokazanych w tabeli.
 
 \begin{table}[H]
 \centering 
-\caption{Tabela porównująca metodę trapezów i adaptacyjną metodę Trapezów}
+\caption{Dane z iteracji metody trapezów i adaptacyjnej metody Trapezów dla funkcji \eqref{Eq:polynomial}}
 \label{tabela9.4}
-\begin{tabular}{lrrr}
+\begin{tabular}{llll}
 \toprule
-{l.podp} & Metoda &  I &  Błąd \\
+{n} & Metoda &  I &  E \\
 \midrule
-4  &     Trapezów & 15.1072  &   1.1829 \\
-6  &     Trapezów & 14.451595 &   0.527295 \\
-8  &     Trapezów & 14.2212   &   0.2969  \\
-10  &    Trapezów & 14.158947  &   0.234647  \\
-12  &    Trapezów & 14.056336 &    0.132036  \\
-16 &     Trapezów & 13.998575  &   0.074275  \\
+4  &     trapezów & 15.1072  &   1.1829 \\
+6  &     trapezów & 14.451595 &   0.527295 \\
+8  &     trapezów & 14.2212   &   0.2969  \\
+10  &    trapezów & 14.158947  &   0.234647  \\
+12  &    trapezów & 14.056336 &    0.132036  \\
+16 &     trapezów & 13.998575  &   0.074275  \\
 \midrule
-4  &     Adaptacyjna & 15.1072 &   1.1829 \\
-6  &     Adaptacyjna & 14.236700 &   0,3124 \\
-8  &     Adaptacyjna & 14,08788  &   0,16358  \\
-10  &     Adaptacyjna & 14.017669 &  0,093369  \\
-12  &    Adaptacyjna & 13.995822 &   0,071522  \\
-16 &     Adaptacyjna & 13.95722 &    0,03292  \\
+4  &     adaptacyjna & 15.1072 &   1.1829 \\
+6  &     adaptacyjna & 14.236700 &   0,3124 \\
+8  &     adaptacyjna & 14,08788  &   0,16358  \\
+10  &    adaptacyjna & 14.017669 &  0,093369  \\
+12  &    adaptacyjna & 13.995822 &   0,071522  \\
+16 &     adaptacyjna & 13.95722 &    0,03292  \\
 
 \bottomrule
 \end{tabular}
 \end{table}
 
-Metoda adaptacyjna radzi sobię lepiej od metody trapezów gdy całkowana funkcja przyjmuje różne tempo zmian wartości na zadanym przedziale. Przykładem takiej funkcji jest \eqref{Eq:oscillatory}. Funkcja ta coraz bardziej oscyluje w pobliżu prawego punktu końcowego.\\
-Wyniki działania obu metod całkowania tej funkcji prezentuje tebela \eqref{tabela9.5}.\\
+Metoda adaptacyjna radzi sobię lepiej od metody trapezów gdy całkowana funkcja przyjmuje różne tempo zmian wartości na zadanym przedziale. Przykładem takiej funkcji jest \eqref{Eq:Oscillatory}. Funkcja ta coraz bardziej oscyluje w pobliżu prawego punktu końcowego.\\
+Wyniki działania obu metod całkowania tej funkcji prezentuje tabela \ref{tabela9.5}.\\
 Liczba podprzedziałów nie jest parametrem metody adaptacyjnej dlatego została dobrana na podstawie tego na jaką ilość podprzedziałów została podzielona funkcja przy danej tolerancji.\\
 Dla 4 podprzedziałów widzimy, że zadana tolerancja była na tyle duża, że metoda adaptacyjna podzieliła przedział całkowania w ten sam sposób co metoda trapezów.
 Wraz ze wzrostem ilości podprzedziałów adaptacyjna metoda wykazuje znacznie lepszą dokładność w przybliżaniu całki. Dla 98 podprzedziałów błąd metody adaptacyjnej jest o 2 rzędy wielkości mniejszy niż przy zwykłej metodzie trapezów.
 
 \begin{table}[H]
 \centering 
-\caption{Tabela porównująca metodę trapezów i adaptacyjną metodę Trapezów}
+\caption{Dane z iteracji metody trapezów i adaptacyjnej metody Trapezów dla funkcji \eqref{Eq:Oscillatory}}
 \label{tabela9.5}
-\begin{tabular}{lrrr}
+\begin{tabular}{llll}
 \toprule
-{l.podp} & Metoda &  I &  Błąd \\
+{n} & Metoda &  I &  e \\
 \midrule
-4  &     Trapezów & 9.731300  &   12.556630 \\
-8  &     Trapezów & -8.227000 &   5.401670 \\
-10  &    Trapezów & 7.068914   &  9.894244  \\
-18  &    Trapezów & 5.822512  &   2.997182  \\
-46  &    Trapezów & -2.827854 &   0.002524   \\
-56 &     Trapezów & -1.467744  &  1.357586  \\
-98 &     Trapezów & 2.295961 &    0.529369  \\
+4  &     trapezów & 9.731300  &   12.556630 \\
+8  &     trapezów & -8.227000 &   5.401670 \\
+10  &    trapezów & 7.068914   &  9.894244  \\
+18  &    trapezów & 5.822512  &   2.997182  \\
+46  &    trapezów & -2.827854 &   0.002524   \\
+56 &     trapezów & -1.467744  &  1.357586  \\
+98 &     trapezów & 2.295961 &    0.529369  \\
 \midrule
-4  &     Adaptacyjna & 9.731300 &   12.556630 \\
-8  &     Adaptacyjna & -9.439613 &   6.614283 \\
-10  &    Adaptacyjna & -11.1515886  &   8.326258  \\
-18  &    Adaptacyjna & -3.881971 &  1.056641  \\
-46  &    Adaptacyjna & -2.868944 &   0.043614  \\
-56 &     Adaptacyjna & -2.846306 &    0.020976  \\
-98 &     Adaptacyjna & -2.825574 &    0.000244  \\
+4  &     adaptacyjna & 9.731300 &   12.556630 \\
+8  &     adaptacyjna & -9.439613 &   6.614283 \\
+10  &    adaptacyjna & -11.1515886  &   8.326258  \\
+18  &    adaptacyjna & -3.881971 &  1.056641  \\
+46  &    adaptacyjna & -2.868944 &   0.043614  \\
+56 &     adaptacyjna & -2.846306 &    0.020976  \\
+98 &     adaptacyjna & -2.825574 &    0.000244  \\
 
 \bottomrule
 \end{tabular}
@@ -1200,15 +1252,15 @@ Wraz ze wzrostem ilości podprzedziałów adaptacyjna metoda wykazuje znacznie l
 \paragraph{Porównanie metod Monte Carlo}\mbox{}
 
 
-Tabela \eqref{tabela9.6} przedstawia wyniki z całkowania funkcji \eqref{Eq:trygonometric} metodami Crude Monte Carlo oraz Monte Carlo. Początkowo metoda Monte Carlo wykazuje wększą dokładność niż metoda Crude Monte Carlo, osiągając błąd o 1 rząd wielkości mniejszy. Sytuacja odwraca się przy 10000 punktów, metoda Monte Carlo z racji swojej specyfiki osiągnęła błąd większy niż w poprzedniej iteracji, podczas gdy metoda Crude zwiększa dokładność waz z kolejnymi iteracjami. Po próbkowaniu 1000000 punktami, metoda Crude okazała sie 3-krotnie lepsza niż metoda Monte Carlo.
+Tabela \ref{tabela9.6} przedstawia wyniki z całkowania funkcji \eqref{Eq:trygonometric} metodami Crude Monte Carlo oraz Monte Carlo. Początkowo metoda Monte Carlo wykazuje wększą dokładność niż metoda Crude Monte Carlo, osiągając błąd o 1 rząd wielkości mniejszy. Sytuacja odwraca się przy 10000 punktów, metoda Monte Carlo z racji swojej specyfiki osiągnęła błąd większy niż w poprzedniej iteracji, podczas gdy metoda Crude zwiększa dokładność waz z kolejnymi iteracjami. Po próbkowaniu 1000000 punktami, metoda Crude okazała sie 3-krotnie lepsza niż metoda Monte Carlo.
 
 \begin{table}[H]
 \centering 
-\caption{Tabela porównująca metodę Crude Monte Carlo oraz Monte Carlo dla funkcji trgonometrycznej}
+\caption{Dane z działania metod Crude Monte Carlo oraz Monte Carlo dla funkcji trgonometrycznej}
 \label{tabela9.6}
 \begin{tabular}{lrrr}
 \toprule
-{l.podp} & Metoda &  I &  Błąd \\
+{n} & Metoda &  I &  E \\
 \midrule
 10  &     Crude & 0.217109  &   0.027599 \\
 100  &     Crude & 0.284756 &   0.040048 \\
@@ -1228,16 +1280,16 @@ Tabela \eqref{tabela9.6} przedstawia wyniki z całkowania funkcji \eqref{Eq:tryg
 \end{table}
 
 
-Tabela \eqref{tabela9.6} przedstawia wyniki uzyskane z całkowania funkcji \eqref{Eq:polynomial} metodami Crude Monte Carlo oraz Monte Carlo. Podobnie jak w przypadku całkowania poprzedniej funkcji tai i tu dla 1000000 punktów, metoda Crude okazała się  około 3-krotnie lepsza niż standardowa metoda Monte Carlo. 
+Tabela \ref{tabela9.6} przedstawia wyniki uzyskane z całkowania funkcji \eqref{Eq:polynomial} metodami Crude Monte Carlo oraz Monte Carlo. Podobnie jak w przypadku całkowania poprzedniej funkcji tak i tu dla 1000000 punktów, metoda Crude okazała się  około 3-krotnie lepsza niż standardowa metoda Monte Carlo. 
 
 
 \begin{table}[H]
 \centering 
-\caption{Tabela porównująca metodę Crude Monte Carlo oraz Monte Carlo dla funkcji wielomianowej}
+\caption{Dane z działania metod Crude Monte Carlo oraz Monte Carlo dla funkcji wielomianowej}
 \label{tabela9.7}
 \begin{tabular}{lrrr}
 \toprule
-{l.podp} & Metoda &  I &  Błąd \\
+{n} & Metoda &  I &  E \\
 \midrule
 10  &     Crude & 13.43583  &   0.48847 \\
 100  &     Crude & 14.133026 &   0.208726 \\
@@ -1263,11 +1315,12 @@ Celem niniejszej pracy inżynierskiej była implementacja oraz analiza wybranych
 	W pierwszym rozdziale pracy omówiony został ogólny problem obliczania całki oznaczonej przy pomocy metod numerycznych oraz krótko nakreślone zostały metody całkowania poruszane w niniejszej pracy. 
 	W drugim rozdziale zostały opisane teoretyczne podstawy oraz przykładowy kod metod całkowania, które zostały zaimplementowane w stworzonej przeze mnie bibliotece. 
 	Trzeci rozdział został poświęcony językowi programowania, biblioteką oraz narzędzią które został wykorzystane do zaimplementowania wspomnianych kwadratur.
-	Rozdział czwarty zawiera  wyniki zawarte w tabelach oraz komentarze odnośniez działania zaimplementowanych metod całkowania.
-	Celem rozdziału piątego było porównanie poszczególnych metod całkowania ze sobą  oraz wyjaśnienie relacji zachodzących między nimi. Rozdział ten zawiera porównanie metod bazujących na interpolacji wielomianowej, porównanie metody simpsona z metodą Gaussa Legendre, porównanie metody metody trapezów z adaptacyjną metodą trapezów, oraz porównanie metod Monte Carlo. Wszystkie porównania zostały dokonane w oparciu o stabelaryzowane dane uzyskane przez działania metod z zaimplementowanej przeze mnie biblioteki. 
+	Rozdział czwarty zawiera opis stworzonej instrukcji laboratoryjnej w środowisku Jupyter Notebook
+	W piątym rozdziale zawarte zostały wyniki oraz komentarze odnośniez działania zaimplementowanych metod całkowania.
+	Celem rozdziału piątego było porównanie poszczególnych metod całkowania ze sobą  oraz wyjaśnienie relacji zachodzących między nimi. Rozdział ten zawiera porównanie metod bazujących na interpolacji wielomianowej, porównanie metody Simpsona z metodą Gaussa Legendre, porównanie metody metody trapezów z adaptacyjną metodą trapezów, oraz porównanie metod Monte Carlo. Wszystkie porównania zostały dokonane w oparciu o stabelaryzowane dane uzyskane przez działania metod z zaimplementowanej przeze mnie biblioteki. 
 
 
- Autor za własny wkład pracy uważa stworzenie biblioteki funkcji zawierającej wybrane metody całkowania numerycznego oraz utworzenie instrukcji laboratoryjnej dla przedmiotu "Metody Numeryczne". Opracowana instrukcja laboratoryjna opiera się na wspomnianej stworzonej bibliotece metod całkowania, zawiera także skrócony opis teoretyczny wykorzystywanych kwadratur oraz szereg zadań do realizacji przez osoby korzystające z niej.
+ Autor za własny wkład pracy uważa stworzenie biblioteki funkcji zawierającej wybrane metody całkowania numerycznego oraz utworzenie instrukcji laboratoryjnej dla przedmiotu "Metody Numeryczne". Opracowana instrukcja laboratoryjna opiera się na wspomnianej stworzonej bibliotece metod całkowania, zawiera także skrócony opis teoretyczny wykorzystywanych kwadratur oraz szereg zadań do realizacji przez osoby z niej korzystające.
  
 .
 \clearpage
@@ -1295,11 +1348,6 @@ Celem niniejszej pracy inżynierskiej była implementacja oraz analiza wybranych
 \bibitem{Notebook_2} https://en.wikipedia.org/wiki/Read%E2%80%93eval%E2%80%93print_loop
 \bibitem{Notebook_3} https://en.wikipedia.org/wiki/Project\_Jupyter
 \bibitem{Notebook_4} https://jupyter4edu.github.io/jupyter-edu-book/jupyter.html
-\bibitem{str} http://weii.portal.prz.edu.pl/pl/materialy-do-pobrania. Dostęp 5.01.2015.
-\bibitem{Jakubczyk1997} Jakubczyk T., Klette A.: Pomiary w akustyce. WNT, Warszawa 1997.
-\bibitem{Barski2011} Barski S.: Modele transmitancji. Elektronika praktyczna, nr 7/2011, str. 15-18.
-\bibitem{dokum} Czujnik S200. Dokumentacja techniczno-ruchowa. Lumel, Zielona Góra, 2001.
-\bibitem{Pawluk2001} Pawluk K.: Jak pisać teksty techniczne poprawnie, Wiadomości Elektrotechniczne, Nr 12, 2001, str. 513-515.
 \end{thebibliography}
 
 \clearpage
